@@ -1,0 +1,180 @@
+-- Create database
+CREATE DATABASE IF NOT EXISTS faculty_management;
+USE faculty_management;
+
+-- User table (base for all user types)
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(20),
+    profile_picture LONGBLOB,
+    user_type ENUM('admin', 'lecturer', 'technical_officer', 'student') NOT NULL
+);
+
+-- Admin table (extends users)
+CREATE TABLE admins (
+    admin_id INT PRIMARY KEY,
+    FOREIGN KEY (admin_id) REFERENCES users(user_id)
+);
+
+-- Lecturer table (extends users)
+CREATE TABLE lecturers (
+    lecturer_id INT PRIMARY KEY,
+    department VARCHAR(100) NOT NULL,
+    FOREIGN KEY (lecturer_id) REFERENCES users(user_id)
+);
+
+-- Technical Officer table (extends users)
+CREATE TABLE technical_officers (
+    officer_id INT PRIMARY KEY,
+    department VARCHAR(100) NOT NULL,
+    FOREIGN KEY (officer_id) REFERENCES users(user_id)
+);
+
+-- Student table (extends users)
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    registration_number VARCHAR(20) UNIQUE NOT NULL,
+    batch VARCHAR(20) NOT NULL,
+    degree_program VARCHAR(100) NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES users(user_id)
+);
+
+-- Courses table
+CREATE TABLE courses (
+    course_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_code VARCHAR(20) UNIQUE NOT NULL,
+    course_name VARCHAR(100) NOT NULL,
+    credits INT NOT NULL,
+    theory_hours INT,
+    practical_hours INT,
+    description TEXT
+);
+
+-- Course materials
+CREATE TABLE course_materials (
+    material_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
+    upload_date DATETIME NOT NULL,
+    uploaded_by INT NOT NULL,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id),
+    FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
+);
+
+-- Notices
+CREATE TABLE notices (
+    notice_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL,
+    publish_date DATETIME NOT NULL,
+    publisher_id INT NOT NULL,
+    FOREIGN KEY (publisher_id) REFERENCES users(user_id)
+);
+
+-- Timetables
+CREATE TABLE timetables (
+    timetable_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    lecturer_id INT NOT NULL,
+    day_of_week ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') NOT NULL,
+    start_time TIME NOT NULL,
+    end_time TIME NOT NULL,
+    location VARCHAR(50) NOT NULL,
+    session_type ENUM('theory', 'practical') NOT NULL,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id),
+    FOREIGN KEY (lecturer_id) REFERENCES lecturers(lecturer_id)
+);
+
+-- Medical records
+CREATE TABLE medical_records (
+    record_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    record_date DATE NOT NULL,
+    description TEXT NOT NULL,
+    supporting_docs LONGBLOB,
+    submitted_date DATETIME NOT NULL,
+    approved BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
+
+-- Attendance
+CREATE TABLE attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    course_id INT NOT NULL,
+    session_date DATE NOT NULL,
+    session_type ENUM('theory', 'practical') NOT NULL,
+    status ENUM('present', 'absent', 'medical') NOT NULL,
+    medical_record_id INT,
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (course_id) REFERENCES courses(course_id),
+    FOREIGN KEY (medical_record_id) REFERENCES medical_records(record_id)
+);
+
+-- Marks tables
+CREATE TABLE quizzes (
+    quiz_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    student_id INT NOT NULL,
+    quiz_number INT NOT NULL,
+    marks DECIMAL(5,2) NOT NULL,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
+
+CREATE TABLE assessments (
+    assessment_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    student_id INT NOT NULL,
+    assessment_number INT NOT NULL,
+    marks DECIMAL(5,2) NOT NULL,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
+
+CREATE TABLE mid_terms (
+    mid_term_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    student_id INT NOT NULL,
+    marks DECIMAL(5,2) NOT NULL,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
+
+CREATE TABLE final_theory (
+    final_theory_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    student_id INT NOT NULL,
+    marks DECIMAL(5,2) NOT NULL,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
+
+CREATE TABLE final_practical (
+    final_practical_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    student_id INT NOT NULL,
+    marks DECIMAL(5,2) NOT NULL,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
+
+-- Grades
+CREATE TABLE grades (
+    grade_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    student_id INT NOT NULL,
+    ca_marks DECIMAL(5,2) NOT NULL,
+    final_marks DECIMAL(5,2) NOT NULL,
+    total_marks DECIMAL(5,2) NOT NULL,
+    grade VARCHAR(2) NOT NULL,
+    gpa DECIMAL(3,2) NOT NULL,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);

@@ -31,8 +31,8 @@ public class admindash extends JFrame {
       userButton.addActionListener(new ActionListener() {
           @Override
           public void actionPerformed(ActionEvent e) {
-              //dispose();
-              //new usermanagment();
+              dispose();
+              new usermanagment();
 
           }
       });

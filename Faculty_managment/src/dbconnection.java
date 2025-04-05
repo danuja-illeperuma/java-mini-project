@@ -9,7 +9,7 @@ class dbconnection {
 
     public static Connection getConnection() throws SQLException {   //static method that we can access by simply call class name and method name.
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException e) {
             throw new SQLException("MySQL JDBC Driver not found", e);

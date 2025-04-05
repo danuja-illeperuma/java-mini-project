@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1818272-75da-4cd7-8dd6-c6fa3c034159" name="Changes" comment="fix dbconnection">
+    <list default="true" id="f1818272-75da-4cd7-8dd6-c6fa3c034159" name="Changes" comment="improve usermanagment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Faculty_managment/src/admindash.java" beforeDir="false" afterPath="$PROJECT_DIR$/Faculty_managment/src/admindash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Faculty_managment/src/loginform.java" beforeDir="false" afterPath="$PROJECT_DIR$/Faculty_managment/src/loginform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Faculty_managment/src/usermanagment.form" beforeDir="false" afterPath="$PROJECT_DIR$/Faculty_managment/src/usermanagment.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Faculty_managment/src/usermanagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Faculty_managment/src/usermanagment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-mini-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java-mini-project.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +43,9 @@
     "repository": "java-mini-project"
   }
 }]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Security Analysis" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -114,7 +113,7 @@
       <option name="presentableId" value="Default" />
       <updated>1743764853147</updated>
       <workItem from="1743764854325" duration="63000" />
-      <workItem from="1743845661330" duration="7126000" />
+      <workItem from="1743845661330" duration="9222000" />
     </task>
     <task id="LOCAL-00001" summary="fix dbconnection">
       <option name="closed" value="true" />
@@ -124,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743845991567</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="improve usermanagment">
+      <option name="closed" value="true" />
+      <created>1743853329246</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743853329248</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +139,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix dbconnection" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix dbconnection" />
+    <MESSAGE value="improve usermanagment" />
+    <option name="LAST_COMMIT_MESSAGE" value="improve usermanagment" />
   </component>
 </project>

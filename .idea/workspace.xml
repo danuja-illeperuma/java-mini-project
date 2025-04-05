@@ -1,18 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1818272-75da-4cd7-8dd6-c6fa3c034159" name="Changes" comment="" />
+    <list default="true" id="f1818272-75da-4cd7-8dd6-c6fa3c034159" name="Changes" comment="fix dbconnection">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Faculty_managment/src/admindash.java" beforeDir="false" afterPath="$PROJECT_DIR$/Faculty_managment/src/admindash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Faculty_managment/src/loginform.java" beforeDir="false" afterPath="$PROJECT_DIR$/Faculty_managment/src/loginform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Faculty_managment/src/usermanagment.form" beforeDir="false" afterPath="$PROJECT_DIR$/Faculty_managment/src/usermanagment.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Faculty_managment/src/usermanagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Faculty_managment/src/usermanagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-mini-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java-mini-project.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "danuja-illeperuma"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/danuja-illeperuma/java-mini-project.git",
+    "accountId": "69d3cb19-0e81-4261-9725-0a176dcc162b"
+  },
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
+    },
+    "owner": "danuja-illeperuma",
+    "repository": "java-mini-project"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2vGIBzsSQnKdHS3bte1FAWZWAcv" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -20,19 +57,50 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.loginform.executor": "Run",
+    "Application.usermanagment.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dedu",
+    "git-widget-placeholder": "#3 on danuja",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/hansi/OneDrive/Desktop/2nd yr 1st sem/OOP practicum/java-mini-project/Faculty_managment",
+    "last_opened_file_path": "C:/mysql-connector-j-9.2.0/mysql-connector-j-9.2.0.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager" selected="Application.loginform">
+    <configuration name="loginform" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="loginform" />
+      <module name="java-mini-project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="usermanagment" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="usermanagment" />
+      <module name="java-mini-project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.loginform" />
+        <item itemvalue="Application.usermanagment" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
         <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
       </set>
     </attachedChunks>
@@ -46,10 +114,24 @@
       <option name="presentableId" value="Default" />
       <updated>1743764853147</updated>
       <workItem from="1743764854325" duration="63000" />
+      <workItem from="1743845661330" duration="7126000" />
     </task>
+    <task id="LOCAL-00001" summary="fix dbconnection">
+      <option name="closed" value="true" />
+      <created>1743845991567</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743845991567</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix dbconnection" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix dbconnection" />
   </component>
 </project>

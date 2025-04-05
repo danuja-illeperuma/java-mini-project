@@ -51,7 +51,7 @@ public class loginform extends JFrame {
         // Check credentials against database
         try (Connection conn = dbconnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(
-                     "SELECT * FROM users WHERE username = ? AND password = ?")) {
+                     "SELECT * FROM users WHERE username = ? AND BINARY password = ?")) {
 
             stmt.setString(1, username);
             stmt.setString(2, password); // In real application, use hashed passwords

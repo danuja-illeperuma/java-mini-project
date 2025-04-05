@@ -35,7 +35,6 @@ public class usermanagment extends JFrame {
 
 
     usermanagment() {
-        createtable();
         //linking step
 
         //linking step
@@ -56,6 +55,7 @@ public class usermanagment extends JFrame {
 
 
 
+        createtable();
 
         tableload();
         setborder();
@@ -129,7 +129,7 @@ public class usermanagment extends JFrame {
 
 
                 photolabel.setIcon(null); // No image available
-                selectedImagePath="null";
+                selectedImagePath=null;
                 selectbox.setSelectedItem(d1.getValueAt(selectIndex, 8).toString());
 
 
@@ -159,7 +159,7 @@ public class usermanagment extends JFrame {
                         return;
                     }
                     else {
-                        showMessage("Data updated","Failed",JOptionPane.ERROR_MESSAGE);
+                        showMessage("please click the field want to update from the table","Failed",JOptionPane.ERROR_MESSAGE);
                     }
 
 
@@ -181,7 +181,7 @@ public class usermanagment extends JFrame {
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
-    String path2; //to get the path
+
     String selectedImagePath = "";
     int id;
 
@@ -312,7 +312,7 @@ public class usermanagment extends JFrame {
                 Image img = imageicon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 
                 pst.setString(8, selectedImagePath);
-//        imageLabel.setIcon(imageicon);
+
 
 
                 int rs = pst.executeUpdate();

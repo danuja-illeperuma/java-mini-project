@@ -1,0 +1,77 @@
+CREATE TABLE user
+(
+	user_id CHAR(6) PRIMARY KEY,
+	user_name VARCHAR(30) NOT NULL,
+	email VARCHAR(50) NOT NULL UNIQUE,
+	date_of_birth DATE,
+	role VARCHAR(30),
+	gender CHAR(1)
+	
+);
+
+INSERT INTO user
+VALUES
+('AD1001','Sadun wickramasinghe','admin@ruh.ac.lk','1980-10-05','Admin','M'),
+('LC1002','Subash jayasinghe','subash@ictec.ruh.ac.lk','1975-05-15','Lecturer','M'),
+('LC1003','Nuwan laksiri','phpnlaksiri@ictec.ruh.ac.lk','1982-07-28','Lecturer','M'),
+('TG1340','Wijewardhana','vihangayasitha@gmail.com','2002-06-21','Student','M'),
+('TG1341','Chamika','sahanchamika@gmail.com','2002-02-25','Student','M'),
+('TG1342','Harshana','harshana@gmail.com','2002-11-05','Student','M'),
+('LC1004','Navoda','navodanherath@mtec.ruh.ac.lk','1990-06-25','Lecturer','F'),
+('TO1005','Sameera','sameera@fot.ruh.ac.lk','1981-12-25','Technical Officer','M'),
+('TG1343','Dharshika','tdharshika2002@gmail.com','2002-07-03','Student','F'),
+('TG1344','Shashini','shashinikaushalya557@gmail.com','2002-08-10','Student','F'),
+('LC1006','Niranjan','niranjan@btec.ruh.ac.lk','1978-10-10','Lecturer','M'),
+('LC1007','Sanjeewani','sanjeewani@fot.ruh.ac.lk','1983-03-18','Lecturer','F'),
+('TO1008','Umandi','umandi@fot.ruh.ac.lk','1988-08-12','Technical officer','F'),
+('TG1345','Jayarathna','jayarathnahpj23@gmail.com','2002-05-19','Student','F'),
+('TG1346','Sankalpana','gaveshi.sankalpana@gmail.com','2002-04-18','Student','F'),
+('LC1009','Chanduni','chanduni@ictec.ruh.ac.lk','1990-11-01','Lecturer','F'),
+('LC1010','Naveen','naveen@fot.ruh.ac.lk','1987-06-13','Lecturer','M'),
+('TO1011','Kumara','kumara@fot.ruh.ac.lk','1988-02-14','Technical officer','M'),
+('TG1347','Randika','randikadhyan@gmail.com','1980-10-05','Student','M'),
+('TG1348','Fernando','piumikafernando07@gmail.com','2002-09-03','Student','F'),
+('TO1012','Madushan','madushan@fot.ruh.ac.lk','1980-07-22','Technical officer','M'),
+('TO1013','Sahani','shahani@fot.ruh.ac.lk','1985-07-30','Technical officer','F'),
+('TO1014','Chamila','chamila@fot.ruh.ac.lk','1989-07-22','Technical officer','M'),
+('TG1349','Kusal','kusal12@gmail.com','2002-11-22','Student','M'),
+('TG1350','Nuwani','nuwani78@gmail.com','2002-06-01','Student','F'),
+('TG1351','Sandun','sadun90@gmail.com','2002-11-26','Student','M'),
+('TG1352','Chathuranga','chathuranga@gmail.com','2002-03-01','Student','M'),
+('TG1353','Rumeshika','rumeshika@gmail.com','2002-09-11','Student','F'),
+('TG1354','Piyumi','piyumi@gmail.com','2002-05-01','Student','F'),
+('TG1355','Minoka','iduwaraminoka@gmail.com','2002-02-18','Student','M'),
+('TG1356','Nishadini','chavindya12@gmail.com','2002-03-25','Student','M'),
+('TG1357','Sanuka','sanuka123@gmail.com','2000-04-06','Student','M'),
+('TG1358','Gamage','amali@gmail.com','2001-05-24','Student','F'),
+('TG1359','Sewwandi','sewwandi1225@gmail.com','2001-06-19','Student','F'),
+('TG1360','Dishan','dishans@gmail.com','2000-07-12','Student','M'),
+('TG1361','Aasha','asha200109@gmail.com','2001-12-17','Student','F'),
+('TG1362','Sithusha','sithusha123@gmail.com','2002-10-19','Student','F'),
+('TG1363','Umaya','chalaniumaya@gmail.com','2002-06-27','Student','F'),
+
+
+--------------------------------
+Course_units Table
+--------------------------------
+
+
+CREATE TABLE course_units(
+c_code VARCHAR(10),
+c_title VARCHAR(50),
+credits INT(1),
+theory_hrs INT(3),
+practical_hrs INT(3),
+lecturer_in_charge VARCHAR(100),
+PRIMARY KEY(c_code)
+);
+
+INSERT INTO course_units VALUES
+('ICT2142','Object Oriented Programming Practicum',2,0,60,'Mr.P.H.P.Nuwan Laksiri'),
+('ICT2122','Object Oriented Programming',2,60,0,'Mr.P.H.P.Nuwan Laksiri'),
+('ICT2113','Data Structures AND Algorithms',3,60,30,'Mr.Shashitha Lakal'),
+('ICT2133','Object Oriented Analysis and Design',3,60,30,'Ms.Chanduni Gamage'),
+('ICT2152','Business Economics',2,60,0,'Mr.Chathuranga Adhikari');
+
+
+

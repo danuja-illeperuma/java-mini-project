@@ -16,4 +16,4 @@ INSERT INTO `courses` (`course_id`, `course_code`, `course_name`, `credits`, `th
 (2, 'ICT2122', 'Object Oriented Programming', '2', '2', '0', 'Mr.P.H.P.Nuwan Laksiri'),
 (3, 'ICT2142', 'Object Oriented Programming Practicum', '2', '0', '4', 'Mr.P.H.P.Nuwan Laksiri'),
 (4, 'ICT2133', 'Object Oriented Analysis & Design', '2', '2', '0', 'Ms.Chanduni Gamage'),
-(5, 'TCS2152', 'Business Economics', '2', '2', '0', 'Mr.Chathuranga Adhikari');
+(5, 'ICT2152', 'E-Commerce Implementation Management & Security', '2', '2', '0', 'Mr.Chathuranga Adhikari');

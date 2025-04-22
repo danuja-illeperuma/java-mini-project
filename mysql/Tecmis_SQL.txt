@@ -404,14 +404,14 @@ Attendance_detail Table
 --------------------------------
 
 CREATE TABLE attendance_detail(
-		user_id CHAR(6),
+		username VARCHAR(20),
 		c_code VARCHAR(10),
 		c_hours INT,
 		lec_date DATE,
 		at_state VARCHAR(10),
 		c_type Char(1),
-		PRIMARY KEY(user_id, c_code, lec_date, c_type),
-		FOREIGN KEY(user_id) REFERENCES users(user_id)
+		PRIMARY KEY(username, c_code, lec_date, c_type),
+		FOREIGN KEY(username) REFERENCES users(username)
 		);
 
 

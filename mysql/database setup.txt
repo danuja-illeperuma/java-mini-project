@@ -89,7 +89,7 @@ CREATE TABLE timetables (
     location VARCHAR(50) NOT NULL,
     session_type ENUM('theory', 'practical') NOT NULL,
     FOREIGN KEY (course_id) REFERENCES courses(course_id),
-    FOREIGN KEY (lecturer_id) REFERENCES lecturers(lecturer_id)
+    FOREIGN KEY (lecturer_id) REFERENCES users(user_id)
 );
 
 -- Medical records

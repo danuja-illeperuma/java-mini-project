@@ -2,23 +2,11 @@
 User Table
 --------------------------------
 
-CREATE TABLE user
-(
-	user_id CHAR(6) PRIMARY KEY,
-	user_name VARCHAR(30) NOT NULL,
-	email VARCHAR(50) NOT NULL UNIQUE,
-	date_of_birth DATE,
-	role VARCHAR(30),
-	gender CHAR(1)
-	
-);
-
-
 INSERT INTO users (user_id, username, password, first_name, last_name, email, phone, profile_picture, user_type)
 VALUES
 (1, 'AD1001', 'ad1001@123', 'Sadun', 'wickramasinghe', 'admin@ruh.ac.lk', '0771234001', NULL, 'admin'),
 (2, 'LC1002', 'lc1002@123', 'Subash', 'jayasinghe', 'subash@ictec.ruh.ac.lk', '0771234002', NULL, 'lecturer'),
-(3, 'LC1003', 'lc1003@123', 'Nuwan', 'laksiri', 'phpnlaksiri@ictec.ruh.ac.lk', '0771234003', NULL, 'lecturer'),
+(3, 'LC1003', 'lc1003@123', 'Mr.P.H.P.Nuwan', 'Laksiri', 'phpnlaksiri@ictec.ruh.ac.lk', '0771234003', NULL, 'lecturer'),
 (4, 'TG1340', 'tg1340@123', 'Wijewardhana', '', 'vihangayasitha@gmail.com', '0771234004', NULL, 'student'),
 (5, 'TG1341', 'tg1341@123', 'Chamika', '', 'sahanchamika@gmail.com', '0771234005', NULL, 'student'),
 (6, 'TG1342', 'tg1342@123', 'Harshana', '', 'harshana@gmail.com', '0771234006', NULL, 'student'),
@@ -31,7 +19,7 @@ VALUES
 (13, 'TO1008', 'to1008@123', 'Umandi', '', 'umandi@fot.ruh.ac.lk', '0771234013', NULL, 'technical_officer'),
 (14, 'TG1345', 'tg1345@123', 'Jayarathna', '', 'jayarathnahpj23@gmail.com', '0771234014', NULL, 'student'),
 (15, 'TG1346', 'tg1346@123', 'Sankalpana', '', 'gaveshi.sankalpana@gmail.com', '0771234015', NULL, 'student'),
-(16, 'LC1009', 'lc1009@123', 'Chanduni', '', 'chanduni@ictec.ruh.ac.lk', '0771234016', NULL, 'lecturer'),
+(16, 'LC1009', 'lc1009@123', 'Ms.Chanduni', 'Gamage', 'chanduni@ictec.ruh.ac.lk', '0771234016', NULL, 'lecturer'),
 (17, 'LC1010', 'lc1010@123', 'Naveen', '', 'naveen@fot.ruh.ac.lk', '0771234017', NULL, 'lecturer'),
 (18, 'TO1011', 'to1011@123', 'Kumara', '', 'kumara@fot.ruh.ac.lk', '0771234018', NULL, 'technical_officer'),
 (19, 'TG1347', 'tg1347@123', 'Randika', '', 'randikadhyan@gmail.com', '0771234019', NULL, 'student'),
@@ -54,33 +42,13 @@ VALUES
 (36, 'TG1361', 'tg1361@123', 'Aasha', '', 'asha200109@gmail.com', '0771234036', NULL, 'student'),
 (37, 'TG1362', 'tg1362@123', 'Sithusha', '', 'sithusha123@gmail.com', '0771234037', NULL, 'student'),
 (38, 'TG1363', 'tg1363@123', 'Umaya', '', 'chalaniumaya@gmail.com', '0771234038', NULL, 'student'),
-(39, 'LC1011', 'lc1011@123', 'Lakal', '', 'lakal@gmail.com', '0771234039', NULL, 'lecturer'),
-(40, 'LC1012', 'lc1011@123', 'Akila', '', 'akila@gmail.com', '0771234040', NULL, 'lecturer'),
+(39, 'LC1011', 'lc1011@123', 'Mr.Shashitha', 'Lakal', 'lakal@gmail.com', '0771234039', NULL, 'lecturer'),
+(40, 'LC1012', 'lc1011@123', 'Ms.Akila', 'Brahmana', 'akila@gmail.com', '0771234040', NULL, 'lecturer'),
 (41, 'LC1013', 'lc1011@123', 'Ridmi', '', 'ridmi@gmail.com', '0771234041', NULL, 'lecturer');
 
 
 
---------------------------------
-Course_units Table
---------------------------------
 
-
-CREATE TABLE course_units(
-c_code VARCHAR(10),
-c_title VARCHAR(50),
-credits INT(1),
-theory_hrs INT(3),
-practical_hrs INT(3),
-lecturer_in_charge VARCHAR(100),
-PRIMARY KEY(c_code)
-);
-
-INSERT INTO course_units VALUES
-('ICT2142','Object Oriented Programming Practicum',2,0,60,'Mr.P.H.P.Nuwan Laksiri'),
-('ICT2122','Object Oriented Programming',2,60,0,'Mr.P.H.P.Nuwan Laksiri'),
-('ICT2113','Data Structures AND Algorithms',3,60,30,'Mr.Shashitha Lakal'),
-('ICT2133','Object Oriented Analysis and Design',3,60,30,'Ms.Chanduni Gamage'),
-('ICT2152','Business Economics',2,60,0,'Mr.Chathuranga Adhikari');
 
 
 --------------------------------

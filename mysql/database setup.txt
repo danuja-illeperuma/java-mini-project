@@ -44,6 +44,7 @@ CREATE TABLE students (
     FOREIGN KEY (student_id) REFERENCES users(user_id)
 );
 
+
 -- Courses table
 CREATE TABLE courses (
     course_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -52,7 +53,7 @@ CREATE TABLE courses (
     credits INT NOT NULL,
     theory_hours INT,
     practical_hours INT,
-    description TEXT
+    lecturer_in_charge VARCHAR(50)
 );
 
 -- Course materials
@@ -104,18 +105,16 @@ CREATE TABLE medical_records (
 );
 
 -- Attendance
-CREATE TABLE attendance (
-    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
-    student_id INT NOT NULL,
-    course_id INT NOT NULL,
-    session_date DATE NOT NULL,
-    session_type ENUM('theory', 'practical') NOT NULL,
-    status ENUM('present', 'absent', 'medical') NOT NULL,
-    medical_record_id INT,
-    FOREIGN KEY (student_id) REFERENCES students(student_id),
-    FOREIGN KEY (course_id) REFERENCES courses(course_id),
-    FOREIGN KEY (medical_record_id) REFERENCES medical_records(record_id)
-);
+CREATE TABLE attendance_Detail(
+		username VARCHAR(20),
+		c_code VARCHAR(10),
+		c_hours INT,
+		lec_date DATE,
+		at_state VARCHAR(10),
+		c_type Char(1),
+		PRIMARY KEY(username, c_code, lec_date, c_type),
+		FOREIGN KEY(username) REFERENCES users(username)
+		);
 
 -- Marks tables
 CREATE TABLE quizzes (

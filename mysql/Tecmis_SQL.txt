@@ -416,7 +416,7 @@ CREATE TABLE attendance_detail(
 
 
 /* TG1340 Object Oriented Programing Practicum (ICT2142) - P */
-INSERT INTO attendance_Detail VALUES 
+INSERT INTO attendance_detail VALUES 
 
 ('TG1340', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
 ('TG1340', 'ICT2142' ,4, '2025-01-09', 'Present','P'),

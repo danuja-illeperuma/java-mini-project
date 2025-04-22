@@ -403,7 +403,7 @@ VALUES
 Attendance_detail Table
 --------------------------------
 
-CREATE TABLE attendance_Detail(
+CREATE TABLE attendance_detail(
 		user_id CHAR(6),
 		c_code VARCHAR(10),
 		c_hours INT,

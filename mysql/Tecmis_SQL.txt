@@ -411,7 +411,7 @@ CREATE TABLE attendance_Detail(
 		at_state VARCHAR(10),
 		c_type Char(1),
 		PRIMARY KEY(user_id, c_code, lec_date, c_type),
-		FOREIGN KEY(user_id) REFERENCES user(user_id)
+		FOREIGN KEY(user_id) REFERENCES users(user_id)
 		);
 
 

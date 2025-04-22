@@ -1,0 +1,9 @@
+INSERT INTO `courses` (`course_id`, `course_code`, `course_name`, `credits`, `theory_hours`, `practical_hours`, `description`) VALUES ('1', 'ICT2113', 'Data Structures and Algorithms ', '3', '2', '2', NULL);
+('2', 'ICT2122', 'Object Oriented Programming', '2', '2', '0', NULL),
+('3', 'ICT2132', 'Object Oriented Programming Practicum', '2', '0', '4', NULL),
+('4', 'ICT2142', 'Object Oriented Analysis & Design', '2', '2', '0', NULL),
+('5', 'ICT2152', 'E-Commerce Implementation Management and Security', '2', '2', '0', NULL),
+('6', 'TCS2112', 'Business Economics', '2', '2', '0', NULL),
+('7', 'TCS2121', 'Soft Skills', '1', '2', '0', NULL),
+('8', 'ENG2132', 'English III', '2', '2', '0', NULL),
+

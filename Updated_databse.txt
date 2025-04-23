@@ -106,6 +106,26 @@ VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2113'),
         (SELECT user_id FROM lecturers WHERE first_name = 'Mr.Shashitha'), 
         'Monday', '10:00:00', '12:00:00', 'ICT Lab 11', 'practical');
 
+-- ICT2142 (T) Object Oriented Analysis and Design - Ms. Chanduni (ICT Lab 12)
+INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
+VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2133'), 
+        (SELECT user_id FROM users WHERE first_name = 'Ms.Chanduni'), 
+        'Tuesday', '08:00:00', '10:00:00', 'ICT Lab 12', 'theory');
+        
+
+-- ICT2142 (T) Object Oriented Analysis and Design - Ms. Chanduni (ICT Lab 12)
+INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
+VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2133'), 
+        (SELECT user_id FROM users WHERE first_name = 'Ms.Chanduni'), 
+        'Tuesday', '10:00:00', '12:00:00', 'ICT Lab 12', 'practical');
+
+        
+            INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
+VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2152'), 
+        (SELECT user_id FROM users WHERE first_name = 'Ms.Akila'), 
+        'Wednesday', '8:00:00', '10:00:00', 'ICT Lab 11', 'theory');
+        
+
 
 
 -- ICT2142 (P) Object Oriented Programming - Mr. Nuwan (ICT Lab 12)
@@ -126,38 +146,6 @@ INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_tim
 VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2122'), 
         (SELECT user_id FROM users WHERE first_name = 'Mr.P.H.P.Nuwan'), 
         'Thursday', '08:00:00', '10:00:00', 'ICT Lab 12', 'theory');
-
-
-
--- ICT2142 (T) Object Oriented Analysis and Design - Ms. Chanduni (ICT Lab 12)
-INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
-VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2133'), 
-        (SELECT user_id FROM users WHERE first_name = 'Ms.Chanduni'), 
-        'Tuesday', '08:00:00', '10:00:00', 'ICT Lab 12', 'theory');
-        
-
--- ICT2142 (T) Object Oriented Analysis and Design - Ms. Chanduni (ICT Lab 12)
-INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
-VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2133'), 
-        (SELECT user_id FROM users WHERE first_name = 'Ms.Chanduni'), 
-        'Tuesday', '10:00:00', '12:00:00', 'ICT Lab 12', 'practical');
-        
-    
-        
-            INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
-VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2152'), 
-        (SELECT user_id FROM users WHERE first_name = 'Ms.Akila'), 
-        'Wednesday', '8:00:00', '10:00:00', 'ICT Lab 11', 'theory');
-        
-             
-
-
-
-
-
-
-
-
 
 
 

@@ -1,7 +1,7 @@
 -- ICT2113 (T) Data Structures and Algorithms - Mr. Lakal (ICT Lab 11)
 INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
 VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2113'), 
-        (SELECT user_id FROM users WHERE first_name = 'Mr.Shashith'), 
+        (SELECT user_id FROM users WHERE first_name = 'Mr.Shashitha'), 
         'Monday', '08:00:00', '10:00:00', 'ICT Lab 11', 'theory');
 
 -- ICT2113 (P) Data Structures and Algorithms - Mr. Lakal (ICT Lab 11)
@@ -14,7 +14,7 @@ VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2113'),
 
 -- ICT2122 (T) Object Oriented Programming - Mr. Nuwan (ICT Lab 12)
 INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
-VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2132'), 
+VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2142'), 
         (SELECT user_id FROM users WHERE first_name = 'Mr.P.H.P.Nuwan'), 
         'Thursday', '10:00:00', '12:00:00', 'ICT Lab 12', 'practical');
 
@@ -29,7 +29,7 @@ VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2122'),
 
 -- ICT2122 (T) Object Oriented Programming - Mr. Nuwan (ICT Lab 12)
 INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
-VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2132'), 
+VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2142'), 
         (SELECT user_id FROM users WHERE first_name = 'Mr.P.H.P.Nuwan'), 
         'Thursday', '01:00:00', '03:00:00', 'ICT Lab 12', 'practical');
 

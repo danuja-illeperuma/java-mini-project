@@ -1,0 +1,4277 @@
+CREATE DATABASE IF NOT EXISTS fotdb;
+USE fotdb;
+
+/*-- User table (base for all user types)*/
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(20),
+    profile_picture VARCHAR(200),
+    user_type ENUM('admin', 'lecturer', 'technical_officer', 'student') NOT NULL
+);
+
+
+INSERT INTO users (user_id, username, password, first_name, last_name, email, phone, profile_picture, user_type)
+VALUES
+(1, 'AD1001', 'ad1001@123', 'Sadun', 'wickramasinghe', 'admin@ruh.ac.lk', '0771234001', NULL, 'admin'),
+(2, 'LC1002', 'lc1002@123', 'Mr.Shashitha', 'Lakal', 'lakal@ictec.ruh.ac.lk', '0771234002', NULL, 'lecturer'),
+(3, 'LC1003', 'lc1003@123', 'Mr.P.H.P.Nuwan', 'laksiri', 'phpnlaksiri@ictec.ruh.ac.lk', '0771234003', NULL, 'lecturer'),
+(4, 'TG1340', 'tg1340@123', 'Vihanga', 'Yasith', 'vihangayasitha@gmail.com', '0771234004', NULL, 'student'),
+(5, 'TG1341', 'tg1341@123', 'Sahan', 'Chamika', 'sahanchamika@gmail.com', '0771234005', NULL, 'student'),
+(6, 'TG1342', 'tg1342@123', 'Harshana', 'Methmal', 'harshana@gmail.com', '0771234006', NULL, 'student'),
+(7, 'LC1004', 'lc1004@123', 'Navoda', 'Herath', 'navodanherath@mtec.ruh.ac.lk', '0771234007', NULL, 'lecturer'),
+(8, 'TO1005', 'to1005@123', 'Sameera', 'Gunarathna', 'sameera@fot.ruh.ac.lk', '0771234008', NULL, 'technical_officer'),
+(9, 'TG1343', 'tg1343@123', 'Dharshika', 'Vas', 'tdharshika2002@gmail.com', '0771234009', NULL, 'student'),
+(10, 'TG1344', 'tg1344@123', 'Shashini', 'Kaushalya', 'shashinikaushalya557@gmail.com', '0771234010', NULL, 'student'),
+(11, 'LC1006', 'lc1006@123', 'Ms.Chanduni', 'Gamage', 'chanduni@btec.ruh.ac.lk', '0771234011', NULL, 'lecturer'),
+(12, 'LC1007', 'lc1007@123', 'Ms.Akila', 'Brahmana', 'Akila@fot.ruh.ac.lk', '0771234012', NULL, 'lecturer'),
+(13, 'TO1008', 'to1008@123', 'Umandi', 'Amasha', 'umandi@fot.ruh.ac.lk', '0771234013', NULL, 'technical_officer'),
+(14, 'TG1345', 'tg1345@123', 'Sadun', 'Jayarathna', 'jayarathnahpj23@gmail.com', '0771234014', NULL, 'student'),
+(15, 'TG1346', 'tg1346@123', 'Gaveshi', 'Sankalpana', 'gaveshi.sankalpana@gmail.com', '0771234015', NULL, 'student'),
+(16, 'LC1009', 'lc1009@123', 'Chathuranga', 'Adhikari', 'chathuranga@tcsec.ruh.ac.lk', '0771234016', NULL, 'lecturer'),
+(17, 'LC1010', 'lc1010@123', 'Naveen', 'Walimuni', 'naveen@fot.ruh.ac.lk', '0771234017', NULL, 'lecturer'),
+(18, 'TO1011', 'to1011@123', 'Kumara', 'Wijenayaka', 'kumara@fot.ruh.ac.lk', '0771234018', NULL, 'technical_officer'),
+(19, 'TG1347', 'tg1347@123', 'Randika', 'Gunathilaka', 'randikadhyan@gmail.com', '0771234019', NULL, 'student'),
+(20, 'TG1348', 'tg1348@123', 'Piyumika', 'Fernando', 'piumikafernando07@gmail.com', '0771234020', NULL, 'student'),
+(21, 'TO1012', 'to1012@123', 'Madushan', 'Wijasingha', 'madushan@fot.ruh.ac.lk', '0771234021', NULL, 'technical_officer'),
+(22, 'TO1013', 'to1013@123', 'Sahani', 'Wageesha', 'shahani@fot.ruh.ac.lk', '0771234022', NULL, 'technical_officer'),
+(23, 'TO1014', 'to1014@123', 'Chamila', 'Prasadini', 'chamila@fot.ruh.ac.lk', '0771234023', NULL, 'technical_officer'),
+(24, 'TG1349', 'tg1349@123', 'Kusal', 'Maleesha', 'kusal12@gmail.com', '0771234024', NULL, 'student'),
+(25, 'TG1350', 'tg1350@123', 'Nuwani', 'Prabashi', 'nuwani78@gmail.com', '0771234025', NULL, 'student'),
+(26, 'TG1351', 'tg1351@123', 'Sandun', 'Gamage', 'sadun90@gmail.com', '0771234026', NULL, 'student'),
+(27, 'TG1352', 'tg1352@123', 'Chathuranga', 'Praveen', 'chathuranga@gmail.com', '0771234027', NULL, 'student'),
+(28, 'TG1353', 'tg1353@123', 'Rumeshika', 'Gayani', 'rumeshika@gmail.com', '0771234028', NULL, 'student'),
+(29, 'TG1354', 'tg1354@123', 'Piyumi', 'Kaweesha', 'piyumi@gmail.com', '0771234029', NULL, 'student'),
+(30, 'TG1355', 'tg1355@123', 'Minoka', 'Wickramasingha', 'iduwaraminoka@gmail.com', '0771234030', NULL, 'student'),
+(31, 'TG1356', 'tg1356@123', 'Nishadini', 'chavindya', 'chavindya12@gmail.com', '0771234031', NULL, 'student'),
+(32, 'TG1357', 'tg1357@123', 'Sanuka', 'Lakmal', 'sanuka123@gmail.com', '0771234032', NULL, 'student'),
+(33, 'TG1358', 'tg1358@123', 'Amali', 'Gamage', 'amali@gmail.com', '0771234033', NULL, 'student'),
+(34, 'TG1359', 'tg1359@123', 'Sewwandi', 'Pathirana', 'sewwandi1225@gmail.com', '0771234034', NULL, 'student'),
+(35, 'TG1360', 'tg1360@123', 'Dishan', 'Randika', 'dishans@gmail.com', '0771234035', NULL, 'student'),
+(36, 'TG1361', 'tg1361@123', 'Asha', 'Prasadini', 'asha200109@gmail.com', '0771234036', NULL, 'student'),
+(37, 'TG1362', 'tg1362@123', 'Sithusha', 'Lakmini', 'sithusha123@gmail.com', '0771234037', NULL, 'student'),
+(38, 'TG1363', 'tg1363@123', 'Umaya', 'Chalani', 'chalaniumaya@gmail.com', '0771234038', NULL, 'student'),
+(39, 'LC1011', 'lc1011@123', 'Piyumi', 'Wijewardana', 'piyumi@gmail.com', '0771234039', NULL, 'lecturer'),
+(40, 'LC1012', 'lc1011@123', 'Dilhan', 'Ekanayaka', 'dilhan@gmail.com', '0771234040', NULL, 'lecturer'),
+(41, 'LC1013', 'lc1011@123', 'Ridmi', 'Kaweesha', 'ridmi@gmail.com', '0771234041', NULL, 'lecturer');
+
+
+/*Course Table*/
+
+CREATE TABLE courses (
+    course_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_code VARCHAR(20) UNIQUE NOT NULL,
+    course_name VARCHAR(100) NOT NULL,
+    credits INT NOT NULL,
+    theory_hours INT,
+    practical_hours INT,
+    lecturer_in_charge VARCHAR(50)
+);
+
+
+
+INSERT INTO `courses` (`course_id`, `course_code`, `course_name`, `credits`, `theory_hours`, `practical_hours`, `lecturer_in_charge`) VALUES
+(1, 'ICT2113', 'Data Structures and Algorithms', '3', '2', '2', 'Mr.Shashitha Lakal'),
+(2, 'ICT2122', 'Object Oriented Programming', '2', '2', '0', 'Mr.P.H.P.Nuwan Laksiri'),
+(3, 'ICT2142', 'Object Oriented Programming Practicum', '2', '0', '4', 'Mr.P.H.P.Nuwan Laksiri'),
+(4, 'ICT2133', 'Object Oriented Analysis & Design', '2', '2', '0', 'Ms.Chanduni Gamage'),
+(5, 'ICT2152', 'E-Commerce Implementation Management & Security', '2', '2', '0', 'Ms.Akila Brahmana');
+
+
+/*Time Table*/
+
+CREATE TABLE timetables (
+    timetable_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    lecturer_id INT NOT NULL,
+    day_of_week ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') NOT NULL,
+    start_time TIME NOT NULL,
+    end_time TIME NOT NULL,
+    location VARCHAR(50) NOT NULL,
+    session_type ENUM('theory', 'practical') NOT NULL,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id),
+    FOREIGN KEY (lecturer_id) REFERENCES users(user_id)
+);
+
+-- ICT2113 (T) Data Structures and Algorithms - Mr. Lakal (ICT Lab 11)
+INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
+VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2113'), 
+        (SELECT user_id FROM users WHERE first_name = 'Mr.Shashitha'), 
+        'Monday', '08:00:00', '10:00:00', 'ICT Lab 11', 'theory');
+
+-- ICT2113 (P) Data Structures and Algorithms - Mr. Lakal (ICT Lab 11)
+INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
+VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2113'), 
+        (SELECT user_id FROM users WHERE first_name = 'Mr.Shashitha'), 
+        'Monday', '10:00:00', '12:00:00', 'ICT Lab 11', 'practical');
+
+
+
+-- ICT2142 (P) Object Oriented Programming - Mr. Nuwan (ICT Lab 12) 
+INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
+VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2142'), 
+        (SELECT user_id FROM users WHERE first_name = 'Mr.P.H.P.Nuwan'), 
+        'Thursday', '10:00:00', '12:00:00', 'ICT Lab 12', 'practical');
+
+-- ICT2142 (P) Object Oriented Programming - Mr. Nuwan (ICT Lab 12)  
+INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
+VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2142'), 
+        (SELECT user_id FROM users WHERE first_name = 'Mr.P.H.P.Nuwan'), 
+        'Thursday', '01:00:00', '03:00:00', 'ICT Lab 12', 'practical');
+
+
+-- ICT2122 (T) Object Oriented Programming - Mr. Nuwan (ICT Lab 12)  
+INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
+VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2122'), 
+        (SELECT user_id FROM users WHERE first_name = 'Mr.P.H.P.Nuwan'), 
+        'Thursday', '08:00:00', '10:00:00', 'ICT Lab 12', 'theory');
+
+
+
+-- ICT2142 (T) Object Oriented Analysis and Design - Ms. Chanduni (ICT Lab 12)  
+INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
+VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2133'), 
+        (SELECT user_id FROM users WHERE first_name = 'Ms.Chanduni'), 
+        'Tuesday', '08:00:00', '10:00:00', 'ICT Lab 12', 'theory');
+        
+
+-- ICT2142 (T) Object Oriented Analysis and Design - Ms. Chanduni (ICT Lab 12)
+INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
+VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2133'), 
+        (SELECT user_id FROM users WHERE first_name = 'Ms.Chanduni'), 
+        'Tuesday', '10:00:00', '12:00:00', 'ICT Lab 12', 'practical');
+        
+    
+        
+            INSERT INTO timetables (course_id, lecturer_id, day_of_week, start_time, end_time, location, session_type)
+VALUES ((SELECT course_id FROM courses WHERE course_code = 'ICT2152'), 
+        (SELECT user_id FROM users WHERE first_name = 'Ms.Akila'), 
+        'Wednesday', '08:00:00', '10:00:00', 'ICT Lab 11', 'theory');
+
+
+/* Notice Table  */
+
+CREATE TABLE notices (
+    notice_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL,
+    publish_date DATETIME NOT NULL
+    
+);
+
+
+INSERT INTO notices (title, content, publish_date)
+VALUES
+('Campus Cleanup Drive', 'Join us for the annual campus cleanup this Saturday, April 27. Gloves and tools provided. Meet at the main gate at 8 AM.', '2025-04-20 10:00:00'),
+
+('New Cafeteria Menu', 'Starting next week, enjoy a healthier and more diverse menu at the student cafeteria. Feedback is welcome!', '2025-04-19 14:15:00'),
+
+('Summer Internship Fair', 'Don’t miss the Internship Fair on May 3 at the main hall. Meet recruiters from top companies. Bring your CV!', '2025-04-18 09:30:00'),
+
+('Blood Donation Camp', 'Red Cross is organizing a blood donation camp on campus on April 30. Free snacks and certificates for donors.', '2025-04-17 11:00:00'),
+
+('AI Workshop Registration', 'Limited seats left for the AI & Machine Learning workshop on May 10. Register online through the student portal.', '2025-04-15 15:45:00'),
+
+('Library Book Return Notice', 'Reminder: All borrowed books must be returned by May 5 to avoid late fees. Check your library account for due dates.', '2025-04-16 13:00:00'),
+
+('Sports Fest 2025', 'Annual Sports Fest begins on May 12. Register your teams by April 28. Trophies and prizes await the champions!', '2025-04-14 08:50:00');
+
+
+
+CREATE TABLE attendance_detail(
+		at_id INT AUTO_INCREMENT PRIMARY KEY,
+		username VARCHAR(20),
+		c_code VARCHAR(10),
+		c_hours INT,
+		lec_date DATE,
+		at_state ENUM('Present','Absent','Medical') NOT NULL,
+		c_type ENUM('P','T') NOT NULL,
+		FOREIGN KEY(username) REFERENCES users(username),
+		FOREIGN KEY(c_code) REFERENCES courses(course_code)
+		);
+		
+		
+		
+
+/* TG1340 Object Oriented Programing Practicum (ICT2142) - P */
+INSERT INTO attendance_detail (username,c_code,c_hours,lec_date,at_state,c_type)
+VALUES 
+
+('TG1340', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1340', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1340', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1340', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1340', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1340', 'ICT2142' ,4, '2025-02-06', 'Absent','P'),
+('TG1340', 'ICT2142' ,4, '2025-02-13', 'Present','P'),                
+('TG1340', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1340', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1340', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1340', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1340', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1340', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1340', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1340', 'ICT2142' ,4, '2025-04-10', 'Absent','P'),
+
+
+/* TG1340 Object Oriented Programing (ICT2122) - T */
+('TG1340', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1340', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1340', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1340', 'ICT2122' ,4, '2025-01-23', 'Absent','T'),
+('TG1340', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1340', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1340', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1340', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1340', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1340', 'ICT2122' ,4, '2025-03-06', 'present','T'),
+('TG1340', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1340', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1340', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1340', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1340', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*TG1340 Data Structures and Algorithms  (2113) - T */
+('TG1340', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1340', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1340', 'ICT2113' ,4, '2025-01-20', 'Absent','T'),
+('TG1340', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1340', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1340', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1340', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1340', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1340', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1340', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1340', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1340', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1340', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1340', 'ICT2113' ,4, '2025-04-07', 'Absent','T'),
+('TG1340', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*TG1340 Data Structures and Algorithms -  P */
+('TG1340', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1340', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1340', 'ICT2113' ,2, '2025-01-20', 'Absent','P'),
+('TG1340', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1340', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1340', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1340', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1340', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1340', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1340', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1340', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1340', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1340', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1340', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1340', 'ICT2113' ,2, '2025-04-21', 'Absent','P'),
+
+
+/*TG1340 Object Oriented Analysis and Design (ICT2133) -  P */
+('TG1340', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1340', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1340', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1340', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1340', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1340', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1340', 'ICT2133' ,2, '2025-02-18', 'Absent','P'),
+('TG1340', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1340', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1340', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1340', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1340', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1340', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1340', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1340', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*TG1340 Object Oriented Analysis and Design (ICT2133) - T */
+('TG1340', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1340', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1340', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1340', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1340', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1340', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1340', 'ICT2133',4, '2025-02-18', 'Absent', 'T'),
+('TG1340', 'ICT2133',4, '2025-02-25', 'Absent', 'T'),
+('TG1340', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1340', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1340', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1340', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1340', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1340', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1340', 'ICT2133',4, '2025-04-22', 'Absent', 'T'),
+
+
+/*  Business Economics (2152) - T*/
+('TG1340', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1340', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1340', 'ICT2152',4, '2025-01-24', 'Absent', 'T'),
+('TG1340', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1340', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1340', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1340', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1340', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1340', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1340', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1340', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1340', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1340', 'ICT2152',4, '2025-04-04', 'Absent', 'T'),
+('TG1340', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1340', 'ICT2152',4, '2025-04-25', 'Absent', 'T'),
+
+
+					/*-------------------------TG1341-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1341', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1341', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1341', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1341', 'ICT2142' ,4, '2025-01-23', 'Absent','P'),
+('TG1341', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1341', 'ICT2142' ,4, '2025-02-06', 'Absent','P'),
+('TG1341', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1341', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1341', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1341', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1341', 'ICT2142' ,4, '2025-03-13', 'Absent','P'),
+('TG1341', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1341', 'ICT2142' ,4, '2025-03-27', 'Absent','P'),
+('TG1341', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1341', 'ICT2142' ,4, '2025-04-10', 'Absent','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1341', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1341', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1341', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1341', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1341', 'ICT2122' ,4, '2025-01-30', 'Absent','T'),
+('TG1341', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1341', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1341', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1341', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1341', 'ICT2122' ,4, '2025-03-06', 'Absent','T'),
+('TG1341', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1341', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1341', 'ICT2122' ,4, '2025-03-27', 'Absent','T'),
+('TG1341', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1341', 'ICT2122' ,4, '2025-04-10', 'Absent','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1341', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1341', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1341', 'ICT2113' ,4, '2025-01-20', 'Absent','T'),
+('TG1341', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1341', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1341', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1341', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1341', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1341', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1341', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1341', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1341', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1341', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1341', 'ICT2113' ,4, '2025-04-07', 'Absent','T'),
+('TG1341', 'ICT2113' ,4, '2025-04-21', 'Absent','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1341', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1341', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1341', 'ICT2113' ,2, '2025-01-20', 'Absent','P'),
+('TG1341', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1341', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1341', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1341', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1341', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1341', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1341', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1341', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1341', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1341', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1341', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1341', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1341', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1341', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1341', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1341', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1341', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1341', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1341', 'ICT2133' ,2, '2025-02-18', 'Absent','P'),
+('TG1341', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1341', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1341', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1341', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1341', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1341', 'ICT2133' ,2, '2025-04-01', 'Absent','P'),
+('TG1341', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1341', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1341', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1341', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1341', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1341', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1341', 'ICT2133',4, '2025-02-04', 'Absent', 'T'),
+('TG1341', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1341', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1341', 'ICT2133',4, '2025-02-25', 'Absent', 'T'),
+('TG1341', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1341', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1341', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1341', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1341', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1341', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1341', 'ICT2133',4, '2025-04-22', 'Absent', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1341', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1341', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1341', 'ICT2152',4, '2025-01-24', 'Absent', 'T'),
+('TG1341', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1341', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1341', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1341', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1341', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1341', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1341', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1341', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1341', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1341', 'ICT2152',4, '2025-04-04', 'Absent', 'T'),
+('TG1341', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1341', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+					/*-------------------------TG1342-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1342', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1342', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1342', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1342', 'ICT2142' ,4, '2025-01-23', 'Absent','P'),
+('TG1342', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1342', 'ICT2142' ,4, '2025-02-06', 'Absent','P'),
+('TG1342', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1342', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1342', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1342', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1342', 'ICT2142' ,4, '2025-03-13', 'Absent','P'),
+('TG1342', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1342', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1342', 'ICT2142' ,4, '2025-04-03', 'Absent','P'),
+('TG1342', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1342', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1342', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1342', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1342', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1342', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1342', 'ICT2122' ,4, '2025-02-06', 'Absent','T'),
+('TG1342', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1342', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1342', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1342', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1342', 'ICT2122' ,4, '2025-03-13', 'Absent','T'),
+('TG1342', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1342', 'ICT2122' ,4, '2025-03-27', 'Absent','T'),
+('TG1342', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1342', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1342', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1342', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1342', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1342', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1342', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1342', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1342', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1342', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1342', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1342', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1342', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1342', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1342', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1342', 'ICT2113' ,4, '2025-04-07', 'Absent','T'),
+('TG1342', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1342', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1342', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1342', 'ICT2113' ,2, '2025-01-20', 'Absent','P'),
+('TG1342', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1342', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1342', 'ICT2113' ,2, '2025-02-10', 'Absent','P'),
+('TG1342', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1342', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1342', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1342', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1342', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1342', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1342', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1342', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1342', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1342', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1342', 'ICT2133' ,2, '2025-01-14', 'Absent' ,'P'),
+('TG1342', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1342', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1342', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1342', 'ICT2133' ,2, '2025-02-11', 'Absent','P'),
+('TG1342', 'ICT2133' ,2, '2025-02-18', 'Absent','P'),
+('TG1342', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1342', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1342', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1342', 'ICT2133' ,2, '2025-03-18', 'Absent','P'),
+('TG1342', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1342', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1342', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1342', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1342', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1342', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1342', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1342', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1342', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1342', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1342', 'ICT2133',4, '2025-02-18', 'Absent', 'T'),
+('TG1342', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1342', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1342', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1342', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1342', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1342', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1342', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1342', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1342', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1342', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1342', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1342', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1342', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1342', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1342', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1342', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1342', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1342', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1342', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1342', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1342', 'ICT2152',4, '2025-04-04', 'Absent', 'T'),
+('TG1342', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1342', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+					/*-------------------------TG1343-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1343', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1343', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1343', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1343', 'ICT2142' ,4, '2025-01-23', 'Absent','P'),
+('TG1343', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1343', 'ICT2142' ,4, '2025-02-06', 'Absent','P'),
+('TG1343', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1343', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1343', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1343', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1343', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1343', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1343', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1343', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1343', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1343', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1343', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1343', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1343', 'ICT2122' ,4, '2025-01-23', 'Absent','T'),
+('TG1343', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1343', 'ICT2122' ,4, '2025-02-06', 'Absent','T'),
+('TG1343', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1343', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1343', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1343', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1343', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1343', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1343', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1343', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1343', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1343', 'ICT2113' ,4, '2025-01-06', 'Absent','T'),
+('TG1343', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1343', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1343', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1343', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1343', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1343', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1343', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1343', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1343', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1343', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1343', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1343', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1343', 'ICT2113' ,4, '2025-04-07', 'Absent','T'),
+('TG1343', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1343', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1343', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1343', 'ICT2113' ,2, '2025-01-20', 'Absent','P'),
+('TG1343', 'ICT2113' ,2, '2025-01-27', 'Absent','P'),
+('TG1343', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1343', 'ICT2113' ,2, '2025-02-10', 'Absent','P'),
+('TG1343', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1343', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1343', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1343', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1343', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1343', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1343', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1343', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1343', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1343', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1343', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1343', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1343', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1343', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1343', 'ICT2133' ,2, '2025-02-11', 'Absent','P'),
+('TG1343', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1343', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1343', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1343', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1343', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1343', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1343', 'ICT2133' ,2, '2025-04-01', 'Absent','P'),
+('TG1343', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1343', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1343', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1343', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1343', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1343', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1343', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1343', 'ICT2133',4, '2025-02-11', 'Absent', 'T'),
+('TG1343', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1343', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1343', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1343', 'ICT2133',4, '2025-03-11', 'Absent', 'T'),
+('TG1343', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1343', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1343', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1343', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1343', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1343', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1343', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1343', 'ICT2152',4, '2025-01-24', 'Absent', 'T'),
+('TG1343', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1343', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1343', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1343', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1343', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1343', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1343', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1343', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1343', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1343', 'ICT2152',4, '2025-04-04', 'Absent', 'T'),
+('TG1343', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1343', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1344-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1344', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1344', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1344', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1344', 'ICT2142' ,4, '2025-01-23', 'Absent','P'),
+('TG1344', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1344', 'ICT2142' ,4, '2025-02-06', 'Absent','P'),
+('TG1344', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1344', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1344', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1344', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1344', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1344', 'ICT2142' ,4, '2025-03-20', 'Absent','P'),
+('TG1344', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1344', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1344', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1344', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1344', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1344', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1344', 'ICT2122' ,4, '2025-01-23', 'Absent','T'),
+('TG1344', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1344', 'ICT2122' ,4, '2025-02-06', 'Absent','T'),
+('TG1344', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1344', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1344', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1344', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1344', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1344', 'ICT2122' ,4, '2025-03-20', 'Absent','T'),
+('TG1344', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1344', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1344', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1344', 'ICT2113' ,4, '2025-01-06', 'Absent','T'),
+('TG1344', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1344', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1344', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1344', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1344', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1344', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1344', 'ICT2113' ,4, '2025-02-24', 'Absent','T'),
+('TG1344', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1344', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1344', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1344', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1344', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1344', 'ICT2113' ,4, '2025-04-07', 'Absent','T'),
+('TG1344', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1344', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1344', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1344', 'ICT2113' ,2, '2025-01-20', 'Absent','P'),
+('TG1344', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1344', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1344', 'ICT2113' ,2, '2025-02-10', 'Absent','P'),
+('TG1344', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1344', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1344', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1344', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1344', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1344', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1344', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1344', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1344', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1344', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1344', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1344', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1344', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1344', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1344', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1344', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1344', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1344', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1344', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1344', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1344', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1344', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1344', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1344', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1344', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1344', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1344', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1344', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1344', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1344', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1344', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1344', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1344', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1344', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1344', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1344', 'ICT2133',4, '2025-03-25', 'Absent', 'T'),
+('TG1344', 'ICT2133',4, '2025-04-01', 'Absent', 'T'),
+('TG1344', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1344', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1344', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1344', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1344', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1344', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1344', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1344', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1344', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1344', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1344', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1344', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1344', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1344', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1344', 'ICT2152',4, '2025-04-04', 'Absent', 'T'),
+('TG1344', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1344', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1345-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1345', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1345', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1345', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1345', 'ICT2142' ,4, '2025-01-23', 'Absent','P'),
+('TG1345', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1345', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1345', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1345', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1345', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1345', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1345', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1345', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1345', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1345', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1345', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1345', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1345', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1345', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1345', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1345', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1345', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1345', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1345', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1345', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1345', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1345', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1345', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1345', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1345', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1345', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1345', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1345', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1345', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1345', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1345', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1345', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1345', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1345', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1345', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1345', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1345', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1345', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1345', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1345', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1345', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1345', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1345', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1345', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1345', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1345', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1345', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1345', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1345', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1345', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1345', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1345', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1345', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1345', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1345', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1345', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1345', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1345', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1345', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1345', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1345', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1345', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1345', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1345', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1345', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1345', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1345', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1345', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1345', 'ICT2133' ,2, '2025-04-01', 'Absent','P'),
+('TG1345', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1345', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1345', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1345', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1345', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1345', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1345', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1345', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1345', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1345', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1345', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1345', 'ICT2133',4, '2025-03-11', 'Absent', 'T'),
+('TG1345', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1345', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1345', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1345', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1345', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1345', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1345', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1345', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1345', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1345', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1345', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1345', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1345', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1345', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1345', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1345', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1345', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1345', 'ICT2152',4, '2025-04-04', 'Absent', 'T'),
+('TG1345', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1345', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1346-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1346', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1346', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1346', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1346', 'ICT2142' ,4, '2025-01-23', 'Absent','P'),
+('TG1346', 'ICT2142' ,4, '2025-01-30', 'Absent','P'),
+('TG1346', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1346', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1346', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1346', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1346', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1346', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1346', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1346', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1346', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1346', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1346', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1346', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1346', 'ICT2122' ,4, '2025-01-16', 'Absent','T'),
+('TG1346', 'ICT2122' ,4, '2025-01-23', 'Absent','T'),
+('TG1346', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1346', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1346', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1346', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1346', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1346', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1346', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1346', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1346', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1346', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1346', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1346', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1346', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1346', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1346', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1346', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1346', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1346', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1346', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1346', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1346', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1346', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1346', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1346', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1346', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1346', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1346', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1346', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1346', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1346', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1346', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1346', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1346', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1346', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1346', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1346', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1346', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1346', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1346', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1346', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1346', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1346', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1346', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1346', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1346', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1346', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1346', 'ICT2133' ,2, '2025-02-11', 'Absent','P'),
+('TG1346', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1346', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1346', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1346', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1346', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1346', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1346', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1346', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1346', 'ICT2133' ,2, '2025-04-22', 'Absent','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1346', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1346', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1346', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1346', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1346', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1346', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1346', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1346', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1346', 'ICT2133',4, '2025-03-04', 'Absent', 'T'),
+('TG1346', 'ICT2133',4, '2025-03-11', 'Absent', 'T'),
+('TG1346', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1346', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1346', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1346', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1346', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1346', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1346', 'ICT2152',4, '2025-01-17', 'Absent', 'T'),
+('TG1346', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1346', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1346', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1346', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1346', 'ICT2152',4, '2025-02-21', 'Absent', 'T'),
+('TG1346', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1346', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1346', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1346', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1346', 'ICT2152',4, '2025-03-28', 'Absent', 'T'),
+('TG1346', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1346', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1346', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1347-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1347', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1347', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1347', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1347', 'ICT2142' ,4, '2025-01-23', 'Absent','P'),
+('TG1347', 'ICT2142' ,4, '2025-01-30', 'Absent','P'),
+('TG1347', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1347', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1347', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1347', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1347', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1347', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1347', 'ICT2142' ,4, '2025-03-20', 'Absent','P'),
+('TG1347', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1347', 'ICT2142' ,4, '2025-04-03', 'Absent','P'),
+('TG1347', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1347', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1347', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1347', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1347', 'ICT2122' ,4, '2025-01-23', 'Absent','T'),
+('TG1347', 'ICT2122' ,4, '2025-01-30', 'Absent','T'),
+('TG1347', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1347', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1347', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1347', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1347', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1347', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1347', 'ICT2122' ,4, '2025-03-20', 'Absent','T'),
+('TG1347', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1347', 'ICT2122' ,4, '2025-04-03', 'Absent','T'),
+('TG1347', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1347', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1347', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1347', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1347', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1347', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1347', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1347', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1347', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1347', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1347', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1347', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1347', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1347', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1347', 'ICT2113' ,4, '2025-04-07', 'Absent','T'),
+('TG1347', 'ICT2113' ,4, '2025-04-21', 'Absent','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1347', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1347', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1347', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1347', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1347', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1347', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1347', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1347', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1347', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1347', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1347', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1347', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1347', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1347', 'ICT2113' ,2, '2025-04-07', 'Absent','P'),
+('TG1347', 'ICT2113' ,2, '2025-04-21', 'Absent','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1347', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1347', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1347', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1347', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1347', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1347', 'ICT2133' ,2, '2025-02-11', 'Absent','P'),
+('TG1347', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1347', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1347', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1347', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1347', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1347', 'ICT2133' ,2, '2025-03-25', 'Absent','P'),
+('TG1347', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1347', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1347', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1347', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1347', 'ICT2133',4, '2025-01-14', 'Absent', 'T'),
+('TG1347', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1347', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1347', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1347', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1347', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1347', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1347', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1347', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1347', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1347', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1347', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1347', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1347', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1347', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1347', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1347', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1347', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1347', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1347', 'ICT2152',4, '2025-02-14', 'Absent', 'T'),
+('TG1347', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1347', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1347', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1347', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1347', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1347', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1347', 'ICT2152',4, '2025-04-04', 'Absent', 'T'),
+('TG1347', 'ICT2152',4, '2025-04-11', 'Absent', 'T'),
+('TG1347', 'ICT2152',4, '2025-04-25', 'Absent', 'T'),
+
+
+/*-------------------------TG1348-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1348', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1348', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1348', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1348', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1348', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1348', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1348', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1348', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1348', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1348', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1348', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1348', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1348', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1348', 'ICT2142' ,4, '2025-04-03', 'Absent','P'),
+('TG1348', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1348', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1348', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1348', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1348', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1348', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1348', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1348', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1348', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1348', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1348', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1348', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1348', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1348', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1348', 'ICT2122' ,4, '2025-04-03', 'Absent','T'),
+('TG1348', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1348', 'ICT2113' ,4, '2025-01-06', 'Absent','T'),
+('TG1348', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1348', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1348', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1348', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1348', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1348', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1348', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1348', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1348', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1348', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1348', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1348', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1348', 'ICT2113' ,4, '2025-04-07', 'Absent','T'),
+('TG1348', 'ICT2113' ,4, '2025-04-21', 'Absent','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1348', 'ICT2113' ,2, '2025-01-06', 'Absent','P'),
+('TG1348', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1348', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1348', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1348', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1348', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1348', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1348', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1348', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1348', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1348', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1348', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1348', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1348', 'ICT2113' ,2, '2025-04-07', 'Absent','P'),
+('TG1348', 'ICT2113' ,2, '2025-04-21', 'Absent','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1348', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1348', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1348', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1348', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1348', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1348', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1348', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1348', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1348', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1348', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1348', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1348', 'ICT2133' ,2, '2025-03-25', 'Absent','P'),
+('TG1348', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1348', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1348', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1348', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1348', 'ICT2133',4, '2025-01-14', 'Absent', 'T'),
+('TG1348', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1348', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1348', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1348', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1348', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1348', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1348', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1348', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1348', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1348', 'ICT2133',4, '2025-03-25', 'Absent', 'T'),
+('TG1348', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1348', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1348', 'ICT2133',4, '2025-04-22', 'Absent', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1348', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1348', 'ICT2152',4, '2025-01-17', 'Absent', 'T'),
+('TG1348', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1348', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1348', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1348', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1348', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1348', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1348', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1348', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1348', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1348', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1348', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1348', 'ICT2152',4, '2025-04-11', 'Absent', 'T'),
+('TG1348', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1349-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+INSERT INTO attendance_detail (username,c_code,c_hours,lec_date,at_state,c_type)
+VALUES 
+('TG1349', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1349', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1349', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1349', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1349', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1349', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1349', 'ICT2142' ,4, '2025-02-13', 'Absent','P'), 
+('TG1349', 'ICT2142' ,4, '2025-02-20', 'Absent','P'),                          
+('TG1349', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1349', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1349', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1349', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1349', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1349', 'ICT2142' ,4, '2025-04-03', 'Absent','P'),
+('TG1349', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1349', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1349', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1349', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1349', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1349', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1349', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1349', 'ICT2122' ,4, '2025-02-13', 'Absent','T'),                
+('TG1349', 'ICT2122' ,4, '2025-02-20', 'Absent','T'),                          
+('TG1349', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1349', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1349', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1349', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1349', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1349', 'ICT2122' ,4, '2025-04-03', 'Absent','T'),
+('TG1349', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1349', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1349', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1349', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1349', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1349', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1349', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1349', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1349', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1349', 'ICT2113' ,4, '2025-03-03', 'Absent','T'),
+('TG1349', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1349', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1349', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1349', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1349', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1349', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1349', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1349', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1349', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1349', 'ICT2113' ,2, '2025-01-27', 'Absent','P'),
+('TG1349', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1349', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1349', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1349', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1349', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1349', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1349', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1349', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1349', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1349', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1349', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1349', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1349', 'ICT2133' ,2, '2025-01-14', 'Absent' ,'P'),
+('TG1349', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1349', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1349', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1349', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1349', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1349', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1349', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1349', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1349', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1349', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1349', 'ICT2133' ,2, '2025-04-01', 'Absent','P'),
+('TG1349', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1349', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1349', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1349', 'ICT2133',4, '2025-01-14', 'Absent', 'T'),
+('TG1349', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1349', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1349', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1349', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1349', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1349', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1349', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1349', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1349', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1349', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1349', 'ICT2133',4, '2025-04-01', 'Absent', 'T'),
+('TG1349', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1349', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1349', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1349', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1349', 'ICT2152',4, '2025-01-24', 'Present', 'T'),/////////////////
+('TG1349', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1349', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1349', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1349', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1349', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1349', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1349', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1349', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1349', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1349', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1349', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1349', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1350-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1350', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1350', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1350', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1350', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1350', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1350', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1350', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1350', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1350', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1350', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1350', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1350', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1350', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1350', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1350', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1350', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1350', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1350', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1350', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1350', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1350', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1350', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1350', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1350', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1350', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1350', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1350', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1350', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1350', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1350', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1350', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1350', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1350', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1350', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1350', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1350', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1350', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1350', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1350', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1350', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1350', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1350', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1350', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1350', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1350', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1350', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1350', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1350', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1350', 'ICT2113' ,2, '2025-01-27', 'Absent','P'),
+('TG1350', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1350', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1350', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1350', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1350', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1350', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1350', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1350', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1350', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1350', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1350', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1350', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1350', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1350', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1350', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1350', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1350', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1350', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1350', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1350', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1350', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1350', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1350', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1350', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1350', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1350', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1350', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1350', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1350', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1350', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1350', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1350', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1350', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1350', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1350', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1350', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1350', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1350', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1350', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1350', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1350', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1350', 'ICT2152',4, '2025-04-11', 'Absent', 'T'),
+('TG1350', 'ICT2152',4, '2025-04-25', 'Absent', 'T'),
+
+
+/*-------------------------TG1351-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1351', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1351', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1351', 'ICT2142' ,4, '2025-01-16', 'Absent','P'),
+('TG1351', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1351', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1351', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1351', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1351', 'ICT2142' ,4, '2025-02-20', 'Absent','P'),                          
+('TG1351', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1351', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1351', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1351', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1351', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1351', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1351', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1351', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1351', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1351', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1351', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1351', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1351', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1351', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1351', 'ICT2122' ,4, '2025-02-20', 'Absent','T'),                          
+('TG1351', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1351', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1351', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1351', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1351', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1351', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1351', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1351', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1351', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1351', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1351', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1351', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1351', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1351', 'ICT2113' ,4, '2025-02-17', 'Absent','T'),
+('TG1351', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1351', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1351', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1351', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1351', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1351', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1351', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1351', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1351', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1351', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1351', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1351', 'ICT2113' ,2, '2025-01-27', 'Absent','P'),
+('TG1351', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1351', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1351', 'ICT2113' ,2, '2025-02-17', 'Absent','P'),
+('TG1351', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1351', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1351', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1351', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1351', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1351', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1351', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1351', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1351', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1351', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1351', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1351', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1351', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1351', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1351', 'ICT2133' ,2, '2025-02-18', 'Absent','P'),
+('TG1351', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1351', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1351', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1351', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1351', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1351', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1351', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1351', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1351', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1351', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1351', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1351', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1351', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1351', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1351', 'ICT2133',4, '2025-02-18', 'Absent', 'T'),
+('TG1351', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1351', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1351', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1351', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1351', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1351', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1351', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1351', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1351', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1351', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1351', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1351', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1351', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1351', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1351', 'ICT2152',4, '2025-02-21', 'Absent', 'T'),
+('TG1351', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1351', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1351', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1351', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1351', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1351', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1351', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1351', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1352-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1352', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1352', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1352', 'ICT2142' ,4, '2025-01-16', 'Absent','P'),
+('TG1352', 'ICT2142' ,4, '2025-01-23', 'Absent','P'),
+('TG1352', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1352', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1352', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1352', 'ICT2142' ,4, '2025-02-20', 'Absent','P'),                          
+('TG1352', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1352', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1352', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1352', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1352', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1352', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1352', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1352', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1352', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1352', 'ICT2122' ,4, '2025-01-16', 'Absent','T'),
+('TG1352', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1352', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1352', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1352', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1352', 'ICT2122' ,4, '2025-02-20', 'Absent','T'),                          
+('TG1352', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1352', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1352', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1352', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1352', 'ICT2122' ,4, '2025-03-27', 'Absent','T'),
+('TG1352', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1352', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1352', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1352', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1352', 'ICT2113' ,4, '2025-01-20', 'Absent','T'),
+('TG1352', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1352', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1352', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1352', 'ICT2113' ,4, '2025-02-17', 'Absent','T'),
+('TG1352', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1352', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1352', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1352', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1352', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1352', 'ICT2113' ,4, '2025-03-31', 'Absent','T'),
+('TG1352', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1352', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1352', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1352', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1352', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1352', 'ICT2113' ,2, '2025-01-27', 'Absent','P'),
+('TG1352', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1352', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1352', 'ICT2113' ,2, '2025-02-17', 'Absent','P'),
+('TG1352', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1352', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1352', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1352', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1352', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1352', 'ICT2113' ,2, '2025-03-31', 'Absent','P'),
+('TG1352', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1352', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1352', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1352', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1352', 'ICT2133' ,2, '2025-01-21', 'Absent','P'),
+('TG1352', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1352', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1352', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1352', 'ICT2133' ,2, '2025-02-18', 'Absent','P'),
+('TG1352', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1352', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1352', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1352', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1352', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1352', 'ICT2133' ,2, '2025-04-01', 'Absent','P'),
+('TG1352', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1352', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1352', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1352', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1352', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1352', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1352', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1352', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1352', 'ICT2133',4, '2025-02-18', 'Absent', 'T'),
+('TG1352', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1352', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1352', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1352', 'ICT2133',4, '2025-03-18', 'Absent', 'T'),
+('TG1352', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1352', 'ICT2133',4, '2025-04-01', 'Absent', 'T'),
+('TG1352', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1352', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1352', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1352', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1352', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1352', 'ICT2152',4, '2025-01-31', 'Absent', 'T'),
+('TG1352', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1352', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1352', 'ICT2152',4, '2025-02-21', 'Absent', 'T'),
+('TG1352', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1352', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1352', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1352', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1352', 'ICT2152',4, '2025-03-28', 'Absent', 'T'),
+('TG1352', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1352', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1352', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1353-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1353', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1353', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1353', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1353', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1353', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1353', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1353', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1353', 'ICT2142' ,4, '2025-02-20', 'Absent','P'),                          
+('TG1353', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1353', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1353', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1353', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1353', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1353', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1353', 'ICT2142' ,4, '2025-04-10', 'Absent','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1353', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1353', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1353', 'ICT2122' ,4, '2025-01-16', 'Absent','T'),
+('TG1353', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1353', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1353', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1353', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1353', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1353', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1353', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1353', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1353', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1353', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1353', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1353', 'ICT2122' ,4, '2025-04-10', 'Absent','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1353', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1353', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1353', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1353', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1353', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1353', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1353', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1353', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1353', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1353', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1353', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1353', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1353', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1353', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1353', 'ICT2113' ,4, '2025-04-21', 'Absent','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1353', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1353', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1353', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1353', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1353', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1353', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1353', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1353', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1353', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1353', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1353', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1353', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1353', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1353', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1353', 'ICT2113' ,2, '2025-04-21', 'Absent','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1353', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1353', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1353', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1353', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1353', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1353', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1353', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1353', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1353', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1353', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1353', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1353', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1353', 'ICT2133' ,2, '2025-04-01', 'Absent','P'),
+('TG1353', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1353', 'ICT2133' ,2, '2025-04-22', 'Absent','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1353', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1353', 'ICT2133',4, '2025-04-22', 'Absent', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1353', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1353', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1353', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1353', 'ICT2152',4, '2025-01-31', 'Absent', 'T'),
+('TG1353', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1353', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1353', 'ICT2152',4, '2025-02-21', 'Absent', 'T'),
+('TG1353', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1353', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1353', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1353', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1353', 'ICT2152',4, '2025-03-28', 'Absent', 'T'),
+('TG1353', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1353', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1353', 'ICT2152',4, '2025-04-25', 'Absent', 'T'),
+
+
+/*-------------------------TG1354-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1354', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1354', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1354', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1354', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1354', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1354', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1354', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1354', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1354', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1354', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1354', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1354', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1354', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1354', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1354', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1354', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1354', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1354', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1354', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1354', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1354', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1354', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1354', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1354', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1354', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1354', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1354', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1354', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1354', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1354', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1354', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1354', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1354', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1354', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1354', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1354', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1354', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1354', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1354', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1354', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1354', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1354', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1354', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1354', 'ICT2113' ,4, '2025-04-07', 'Absent','T'),
+('TG1354', 'ICT2113' ,4, '2025-04-21', 'Absent','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1354', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1354', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1354', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1354', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1354', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1354', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1354', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1354', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1354', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1354', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1354', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1354', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1354', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1354', 'ICT2113' ,2, '2025-04-07', 'Absent','P'),
+('TG1354', 'ICT2113' ,2, '2025-04-21', 'Absent','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1354', 'ICT2133' ,2, '2025-01-07', 'Absent','P'),
+('TG1354', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1354', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1354', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1354', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1354', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1354', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1354', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1354', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1354', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1354', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1354', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1354', 'ICT2133' ,2, '2025-04-01', 'Absent','P'),
+('TG1354', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1354', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1354', 'ICT2133',4, '2025-01-07', 'Absent', 'T'),
+('TG1354', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1354', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1354', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1354', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1354', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1354', 'ICT2133',4, '2025-02-18', 'Absent', 'T'),
+('TG1354', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1354', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1354', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1354', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1354', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1354', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1354', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1354', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1354', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1354', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1354', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1354', 'ICT2152',4, '2025-01-31', 'Absent', 'T'),
+('TG1354', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1354', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1354', 'ICT2152',4, '2025-02-21', 'Absent', 'T'),
+('TG1354', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1354', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1354', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1354', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1354', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1354', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1354', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1354', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1355-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1355', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1355', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1355', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1355', 'ICT2142' ,4, '2025-01-23', 'Absent','P'),
+('TG1355', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1355', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1355', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1355', 'ICT2142' ,4, '2025-02-20', 'Absent','P'),                          
+('TG1355', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1355', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1355', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1355', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1355', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1355', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1355', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1355', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1355', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1355', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1355', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1355', 'ICT2122' ,4, '2025-01-30', 'Absent','T'),
+('TG1355', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1355', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1355', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1355', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1355', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1355', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1355', 'ICT2122' ,4, '2025-03-20', 'Absent','T'),
+('TG1355', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1355', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1355', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1355', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1355', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1355', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1355', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1355', 'ICT2113' ,4, '2025-02-03', 'Absent','T'),
+('TG1355', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1355', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1355', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1355', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1355', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1355', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1355', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1355', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1355', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1355', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1355', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1355', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1355', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1355', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1355', 'ICT2113' ,2, '2025-02-03', 'Absent','P'),
+('TG1355', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1355', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1355', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1355', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1355', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1355', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1355', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1355', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1355', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1355', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1355', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1355', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1355', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1355', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1355', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1355', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1355', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1355', 'ICT2133' ,2, '2025-02-25', 'Absent','P'),
+('TG1355', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1355', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1355', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1355', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1355', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1355', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1355', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1355', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1355', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1355', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1355', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1355', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1355', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1355', 'ICT2133',4, '2025-02-18', 'Absent', 'T'),
+('TG1355', 'ICT2133',4, '2025-02-25', 'Absent', 'T'),
+('TG1355', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1355', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1355', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1355', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1355', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1355', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1355', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1355', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1355', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1356-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1356', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1356', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1356', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1356', 'ICT2142' ,4, '2025-01-23', 'Absent','P'),
+('TG1356', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1356', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1356', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1356', 'ICT2142' ,4, '2025-02-20', 'Absent','P'),                          
+('TG1356', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1356', 'ICT2142' ,4, '2025-03-06', 'Absent','P'),
+('TG1356', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1356', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1356', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1356', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1356', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1356', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1356', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1356', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1356', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1356', 'ICT2122' ,4, '2025-01-30', 'Absent','T'),
+('TG1356', 'ICT2122' ,4, '2025-02-06', 'Absent','T'),
+('TG1356', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1356', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1356', 'ICT2122' ,4, '2025-02-27', 'Absent','T'),
+('TG1356', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1356', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1356', 'ICT2122' ,4, '2025-03-20', 'Absent','T'),
+('TG1356', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1356', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1356', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1356', 'ICT2113' ,4, '2025-01-06', 'Absent','T'),
+('TG1356', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1356', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1356', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1356', 'ICT2113' ,4, '2025-02-03', 'Absent','T'),
+('TG1356', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1356', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1356', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1356', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1356', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1356', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1356', 'ICT2113' ,4, '2025-03-24', 'Absent','T'),
+('TG1356', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1356', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1356', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1356', 'ICT2113' ,2, '2025-01-06', 'Absent','P'),
+('TG1356', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1356', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1356', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1356', 'ICT2113' ,2, '2025-02-03', 'Absent','P'),
+('TG1356', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1356', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1356', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1356', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1356', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1356', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1356', 'ICT2113' ,2, '2025-03-24', 'Absent','P'),
+('TG1356', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1356', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1356', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1356', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1356', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1356', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1356', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1356', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1356', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1356', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1356', 'ICT2133' ,2, '2025-02-25', 'Absent','P'),
+('TG1356', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1356', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1356', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1356', 'ICT2133' ,2, '2025-03-25', 'Absent','P'),
+('TG1356', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1356', 'ICT2133' ,2, '2025-04-08', 'Absent','P'),
+('TG1356', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1356', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1356', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1356', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1356', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1356', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1356', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1356', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1356', 'ICT2133',4, '2025-02-25', 'Absent', 'T'),
+('TG1356', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1356', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1356', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1356', 'ICT2133',4, '2025-03-25', 'Absent', 'T'),
+('TG1356', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1356', 'ICT2133',4, '2025-04-08', 'Absent', 'T'),
+('TG1356', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1356', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1356', 'ICT2152',4, '2025-01-17', 'Absent', 'T'),
+('TG1356', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1356', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1356', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1356', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1356', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1356', 'ICT2152',4, '2025-02-28', 'Absent', 'T'),
+('TG1356', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1356', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1356', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1356', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1356', 'ICT2152',4, '2025-04-04', 'Absent', 'T'),
+('TG1356', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1356', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1357-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1357', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1357', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1357', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1357', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1357', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1357', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1357', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1357', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1357', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1357', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1357', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1357', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1357', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1357', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1357', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1357', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1357', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1357', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1357', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1357', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1357', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1357', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1357', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1357', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1357', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1357', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1357', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1357', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1357', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1357', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1357', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1357', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1357', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1357', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1357', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1357', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1357', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1357', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1357', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1357', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1357', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1357', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1357', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1357', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1357', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1357', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1357', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1357', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1357', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1357', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1357', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1357', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1357', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1357', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1357', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1357', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1357', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1357', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1357', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1357', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1357', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1357', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1357', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1357', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1357', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1357', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1357', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1357', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1357', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1357', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1357', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1357', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1357', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1357', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1357', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1357', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1357', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1357', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1357', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1358-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1358', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1358', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1358', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1358', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1358', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1358', 'ICT2142' ,4, '2025-02-06', 'Absent','P'),
+('TG1358', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1358', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1358', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1358', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1358', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1358', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1358', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1358', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1358', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1358', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1358', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1358', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1358', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1358', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1358', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1358', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1358', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1358', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1358', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1358', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1358', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1358', 'ICT2122' ,4, '2025-03-27', 'Absent','T'),
+('TG1358', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1358', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1358', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1358', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1358', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1358', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1358', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1358', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1358', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1358', 'ICT2113' ,4, '2025-02-24', 'Absent','T'),
+('TG1358', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1358', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1358', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1358', 'ICT2113' ,4, '2025-03-24', 'Absent','T'),
+('TG1358', 'ICT2113' ,4, '2025-03-31', 'Absent','T'),
+('TG1358', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1358', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1358', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1358', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1358', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1358', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1358', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1358', 'ICT2113' ,2, '2025-02-10', 'Absent','P'),
+('TG1358', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1358', 'ICT2113' ,2, '2025-02-24', 'Absent','P'),
+('TG1358', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1358', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1358', 'ICT2113' ,2, '2025-03-17', 'Absent','P'),
+('TG1358', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1358', 'ICT2113' ,2, '2025-03-31', 'Absent','P'),
+('TG1358', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1358', 'ICT2113' ,2, '2025-04-21', 'Absent','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1358', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1358', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1358', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1358', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1358', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1358', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1358', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1358', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1358', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1358', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1358', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1358', 'ICT2133' ,2, '2025-03-25', 'Absent','P'),
+('TG1358', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1358', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1358', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1358', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1358', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1358', 'ICT2133',4, '2025-01-21', 'Absent', 'T'),
+('TG1358', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1358', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1358', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1358', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1358', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1358', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1358', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1358', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1358', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1358', 'ICT2133',4, '2025-04-01', 'Absent', 'T'),
+('TG1358', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1358', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1358', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1358', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1358', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1358', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1358', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1358', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1358', 'ICT2152',4, '2025-02-21', 'Absent', 'T'),
+('TG1358', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1358', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1358', 'ICT2152',4, '2025-03-14', 'Absent', 'T'),
+('TG1358', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1358', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1358', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1358', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1358', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1359-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1359', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1359', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1359', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1359', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1359', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1359', 'ICT2142' ,4, '2025-02-06', 'Absent','P'),
+('TG1359', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1359', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1359', 'ICT2142' ,4, '2025-02-27', 'Absent','P'),
+('TG1359', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1359', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1359', 'ICT2142' ,4, '2025-03-20', 'Absent','P'),
+('TG1359', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1359', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1359', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1359', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1359', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1359', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1359', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1359', 'ICT2122' ,4, '2025-01-30', 'Absent','T'),
+('TG1359', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1359', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1359', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1359', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1359', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1359', 'ICT2122' ,4, '2025-03-13', 'Absent','T'),
+('TG1359', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1359', 'ICT2122' ,4, '2025-03-27', 'Absent','T'),
+('TG1359', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1359', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1359', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1359', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1359', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1359', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1359', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1359', 'ICT2113' ,4, '2025-02-10', 'Absent','T'),
+('TG1359', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1359', 'ICT2113' ,4, '2025-02-24', 'Absent','T'),
+('TG1359', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1359', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1359', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1359', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1359', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1359', 'ICT2113' ,4, '2025-04-07', 'Absent','T'),
+('TG1359', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1359', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1359', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1359', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1359', 'ICT2113' ,2, '2025-01-27', 'Absent','P'),
+('TG1359', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1359', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1359', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1359', 'ICT2113' ,2, '2025-02-24', 'Absent','P'),
+('TG1359', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1359', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1359', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1359', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1359', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1359', 'ICT2113' ,2, '2025-04-07', 'Absent','P'),
+('TG1359', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1359', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1359', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1359', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1359', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1359', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1359', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1359', 'ICT2133' ,2, '2025-02-18', 'Absent','P'),
+('TG1359', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1359', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1359', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1359', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1359', 'ICT2133' ,2, '2025-03-25', 'Absent','P'),
+('TG1359', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1359', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1359', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1359', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1359', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1359', 'ICT2133',4, '2025-01-21', 'Absent', 'T'),
+('TG1359', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1359', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1359', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1359', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1359', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1359', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1359', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1359', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1359', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1359', 'ICT2133',4, '2025-04-01', 'Absent', 'T'),
+('TG1359', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1359', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1359', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1359', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1359', 'ICT2152',4, '2025-01-24', 'Absent', 'T'),
+('TG1359', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1359', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1359', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1359', 'ICT2152',4, '2025-02-21', 'Absent', 'T'),
+('TG1359', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1359', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1359', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1359', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1359', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1359', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1359', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1359', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1360-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1360', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1360', 'ICT2142' ,4, '2025-01-09', 'Absent','P'),
+('TG1360', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1360', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1360', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1360', 'ICT2142' ,4, '2025-02-06', 'Absent','P'),
+('TG1360', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1360', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1360', 'ICT2142' ,4, '2025-02-27', 'Absent','P'),
+('TG1360', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1360', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1360', 'ICT2142' ,4, '2025-03-20', 'Absent','P'),
+('TG1360', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1360', 'ICT2142' ,4, '2025-04-03', 'Absent','P'),
+('TG1360', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1360', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1360', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1360', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1360', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1360', 'ICT2122' ,4, '2025-01-30', 'Absent','T'),
+('TG1360', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1360', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1360', 'ICT2122' ,4, '2025-02-20', 'Absent','T'),                          
+('TG1360', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1360', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1360', 'ICT2122' ,4, '2025-03-13', 'Absent','T'),
+('TG1360', 'ICT2122' ,4, '2025-03-20', 'Absent','T'),
+('TG1360', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1360', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1360', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1360', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1360', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1360', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1360', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1360', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1360', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1360', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1360', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1360', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1360', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1360', 'ICT2113' ,4, '2025-03-17', 'Absent','T'),       
+('TG1360', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1360', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1360', 'ICT2113' ,4, '2025-04-07', 'Absent','T'),
+('TG1360', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1360', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1360', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1360', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1360', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1360', 'ICT2113' ,2, '2025-02-03', 'Absent','P'),
+('TG1360', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1360', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1360', 'ICT2113' ,2, '2025-02-24', 'Absent','P'),
+('TG1360', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1360', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1360', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1360', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1360', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1360', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1360', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1360', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1360', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1360', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1360', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1360', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1360', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1360', 'ICT2133' ,2, '2025-02-18', 'Absent','P'),
+('TG1360', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1360', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1360', 'ICT2133' ,2, '2025-03-11', 'Absent','P'),
+('TG1360', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1360', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1360', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1360', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1360', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1360', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-03-18', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1360', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1360', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1360', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1360', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1360', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1360', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1360', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1360', 'ICT2152',4, '2025-02-21', 'Absent', 'T'),
+('TG1360', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1360', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1360', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1360', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1360', 'ICT2152',4, '2025-03-28', 'Present', 'T'),
+('TG1360', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1360', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1360', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1361-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1361', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1361', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1361', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1361', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1361', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1361', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1361', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1361', 'ICT2142' ,4, '2025-02-20', 'Absent','P'),                          
+('TG1361', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1361', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1361', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1361', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1361', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1361', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1361', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1361', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1361', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1361', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1361', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1361', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1361', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1361', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1361', 'ICT2122' ,4, '2025-02-20', 'Absent','T'),                          
+('TG1361', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1361', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1361', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1361', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1361', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1361', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1361', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1361', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1361', 'ICT2113' ,4, '2025-01-13', 'Present','T'),
+('TG1361', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1361', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1361', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1361', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1361', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1361', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1361', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1361', 'ICT2113' ,4, '2025-03-10', 'Present','T'),              
+('TG1361', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1361', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1361', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1361', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1361', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1361', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1361', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1361', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1361', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1361', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1361', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1361', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1361', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1361', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1361', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1361', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1361', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1361', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1361', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1361', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1361', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1361', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1361', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1361', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1361', 'ICT2133' ,2, '2025-02-04', 'Absent','P'),
+('TG1361', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1361', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1361', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1361', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1361', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1361', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1361', 'ICT2133' ,2, '2025-03-25', 'Absent','P'),
+('TG1361', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1361', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1361', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1361', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1361', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1361', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1361', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1361', 'ICT2133',4, '2025-02-04', 'Absent', 'T'),
+('TG1361', 'ICT2133',4, '2025-02-11', 'Present', 'T'),
+('TG1361', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1361', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1361', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1361', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1361', 'ICT2133',4, '2025-03-18', 'Absent', 'T'),
+('TG1361', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1361', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1361', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1361', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1361', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1361', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1361', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1361', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1361', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1361', 'ICT2152',4, '2025-02-14', 'Present', 'T'),
+('TG1361', 'ICT2152',4, '2025-02-21', 'Absent', 'T'),
+('TG1361', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1361', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1361', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1361', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1361', 'ICT2152',4, '2025-03-28', 'Absent', 'T'),
+('TG1361', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1361', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1361', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1362-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1362', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1362', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1362', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1362', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1362', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1362', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1362', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1362', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1362', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1362', 'ICT2142' ,4, '2025-03-06', 'Present','P'),
+('TG1362', 'ICT2142' ,4, '2025-03-13', 'Present','P'),
+('TG1362', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1362', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1362', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1362', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1362', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1362', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1362', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1362', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1362', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1362', 'ICT2122' ,4, '2025-02-06', 'Present','T'),
+('TG1362', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1362', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1362', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1362', 'ICT2122' ,4, '2025-03-06', 'Present','T'),
+('TG1362', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1362', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1362', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1362', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1362', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1362', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1362', 'ICT2113' ,4, '2025-01-13', 'Absent','T'),
+('TG1362', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1362', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1362', 'ICT2113' ,4, '2025-02-03', 'Absent','T'),
+('TG1362', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1362', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1362', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1362', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1362', 'ICT2113' ,4, '2025-03-10', 'Absent','T'),              
+('TG1362', 'ICT2113' ,4, '2025-03-17', 'Present','T'),       
+('TG1362', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1362', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1362', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1362', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+
+/*DSA -----------------------------------------------------  P */
+('TG1362', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1362', 'ICT2113' ,2, '2025-01-13', 'Absent' ,'P'),
+('TG1362', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1362', 'ICT2113' ,2, '2025-01-27', 'Present','P'),
+('TG1362', 'ICT2113' ,2, '2025-02-03', 'Absent','P'),
+('TG1362', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1362', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1362', 'ICT2113' ,2, '2025-02-24', 'Present','P'),
+('TG1362', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1362', 'ICT2113' ,2, '2025-03-10', 'Absent','P'),
+('TG1362', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1362', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1362', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1362', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1362', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1362', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1362', 'ICT2133' ,2, '2025-01-14', 'Present' ,'P'),
+('TG1362', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1362', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1362', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1362', 'ICT2133' ,2, '2025-02-11', 'Absent','P'),
+('TG1362', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1362', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1362', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1362', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1362', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1362', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1362', 'ICT2133' ,2, '2025-04-01', 'Present','P'),
+('TG1362', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1362', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1362', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1362', 'ICT2133',4, '2025-01-14', 'Present', 'T'),
+('TG1362', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1362', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1362', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1362', 'ICT2133',4, '2025-02-11', 'Absent', 'T'),
+('TG1362', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1362', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1362', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1362', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1362', 'ICT2133',4, '2025-03-18', 'Absent', 'T'),
+('TG1362', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1362', 'ICT2133',4, '2025-04-01', 'Present', 'T'),
+('TG1362', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1362', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1362', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1362', 'ICT2152',4, '2025-01-17', 'Present', 'T'),
+('TG1362', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1362', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1362', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1362', 'ICT2152',4, '2025-02-14', 'Absent', 'T'),
+('TG1362', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1362', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1362', 'ICT2152',4, '2025-03-07', 'Present', 'T'),
+('TG1362', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1362', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1362', 'ICT2152',4, '2025-03-28', 'Absent', 'T'),
+('TG1362', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1362', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1362', 'ICT2152',4, '2025-04-25', 'Present', 'T'),
+
+
+/*-------------------------TG1363-------------------------------- */
+/*OOPP(ICT2142)--------------------------------------------- P */
+
+('TG1363', 'ICT2142' ,4, '2025-01-02', 'Present','P'),
+('TG1363', 'ICT2142' ,4, '2025-01-09', 'Present','P'),
+('TG1363', 'ICT2142' ,4, '2025-01-16', 'Present','P'),
+('TG1363', 'ICT2142' ,4, '2025-01-23', 'Present','P'),
+('TG1363', 'ICT2142' ,4, '2025-01-30', 'Present','P'),
+('TG1363', 'ICT2142' ,4, '2025-02-06', 'Present','P'),
+('TG1363', 'ICT2142' ,4, '2025-02-13', 'Present','P'), 
+('TG1363', 'ICT2142' ,4, '2025-02-20', 'Present','P'),                          
+('TG1363', 'ICT2142' ,4, '2025-02-27', 'Present','P'),
+('TG1363', 'ICT2142' ,4, '2025-03-06', 'Absent','P'),
+('TG1363', 'ICT2142' ,4, '2025-03-13', 'Absent','P'),
+('TG1363', 'ICT2142' ,4, '2025-03-20', 'Present','P'),
+('TG1363', 'ICT2142' ,4, '2025-03-27', 'Present','P'),
+('TG1363', 'ICT2142' ,4, '2025-04-03', 'Present','P'),
+('TG1363', 'ICT2142' ,4, '2025-04-10', 'Present','P'),
+
+
+/*OOP(ICT2122) -------------------------------------------- T */
+('TG1363', 'ICT2122' ,4, '2025-01-02', 'Present','T'),
+('TG1363', 'ICT2122' ,4, '2025-01-09', 'Present' ,'T'),
+('TG1363', 'ICT2122' ,4, '2025-01-16', 'Present','T'),
+('TG1363', 'ICT2122' ,4, '2025-01-23', 'Present','T'),
+('TG1363', 'ICT2122' ,4, '2025-01-30', 'Present','T'),
+('TG1363', 'ICT2122' ,4, '2025-02-06', 'Absent','T'),
+('TG1363', 'ICT2122' ,4, '2025-02-13', 'Present','T'),                
+('TG1363', 'ICT2122' ,4, '2025-02-20', 'Present','T'),                          
+('TG1363', 'ICT2122' ,4, '2025-02-27', 'Present','T'),
+('TG1363', 'ICT2122' ,4, '2025-03-06', 'Absent','T'),
+('TG1363', 'ICT2122' ,4, '2025-03-13', 'Present','T'),
+('TG1363', 'ICT2122' ,4, '2025-03-20', 'Present','T'),
+('TG1363', 'ICT2122' ,4, '2025-03-27', 'Present','T'),
+('TG1363', 'ICT2122' ,4, '2025-04-03', 'Present','T'),
+('TG1363', 'ICT2122' ,4, '2025-04-10', 'Present','T'),
+
+
+/*DSA (2113) ----------------------------------------------- T */
+('TG1363', 'ICT2113' ,4, '2025-01-06', 'Present','T'),
+('TG1363', 'ICT2113' ,4, '2025-01-13', 'Absent','T'),
+('TG1363', 'ICT2113' ,4, '2025-01-20', 'Present','T'),
+('TG1363', 'ICT2113' ,4, '2025-01-27', 'Present','T'),
+('TG1363', 'ICT2113' ,4, '2025-02-03', 'Present','T'),
+('TG1363', 'ICT2113' ,4, '2025-02-10', 'Present','T'),
+('TG1363', 'ICT2113' ,4, '2025-02-17', 'Present','T'),
+('TG1363', 'ICT2113' ,4, '2025-02-24', 'Present','T'),
+('TG1363', 'ICT2113' ,4, '2025-03-03', 'Present','T'),
+('TG1363', 'ICT2113' ,4, '2025-03-10', 'Absent','T'),              
+('TG1363', 'ICT2113' ,4, '2025-03-17', 'Absent','T'),       
+('TG1363', 'ICT2113' ,4, '2025-03-24', 'Present','T'),
+('TG1363', 'ICT2113' ,4, '2025-03-31', 'Present','T'),
+('TG1363', 'ICT2113' ,4, '2025-04-07', 'Present','T'),
+('TG1363', 'ICT2113' ,4, '2025-04-21', 'Present','T'),
+
+/*DSA -----------------------------------------------------  P */
+('TG1363', 'ICT2113' ,2, '2025-01-06', 'Present','P'),
+('TG1363', 'ICT2113' ,2, '2025-01-13', 'Present' ,'P'),
+('TG1363', 'ICT2113' ,2, '2025-01-20', 'Present','P'),
+('TG1363', 'ICT2113' ,2, '2025-01-27', 'Absent','P'),
+('TG1363', 'ICT2113' ,2, '2025-02-03', 'Present','P'),
+('TG1363', 'ICT2113' ,2, '2025-02-10', 'Present','P'),
+('TG1363', 'ICT2113' ,2, '2025-02-17', 'Present','P'),
+('TG1363', 'ICT2113' ,2, '2025-02-24', 'Absent','P'),
+('TG1363', 'ICT2113' ,2, '2025-03-03', 'Present','P'),
+('TG1363', 'ICT2113' ,2, '2025-03-10', 'Present','P'),
+('TG1363', 'ICT2113' ,2, '2025-03-17', 'Present','P'),
+('TG1363', 'ICT2113' ,2, '2025-03-24', 'Present','P'),
+('TG1363', 'ICT2113' ,2, '2025-03-31', 'Present','P'),
+('TG1363', 'ICT2113' ,2, '2025-04-07', 'Present','P'),
+('TG1363', 'ICT2113' ,2, '2025-04-21', 'Present','P'),
+
+
+/*OOAD(ICT2133) -------------------------------------------  P */
+('TG1363', 'ICT2133' ,2, '2025-01-07', 'Present','P'),
+('TG1363', 'ICT2133' ,2, '2025-01-14', 'Absent' ,'P'),
+('TG1363', 'ICT2133' ,2, '2025-01-21', 'Present','P'),
+('TG1363', 'ICT2133' ,2, '2025-01-28', 'Present','P'),
+('TG1363', 'ICT2133' ,2, '2025-02-04', 'Present','P'),
+('TG1363', 'ICT2133' ,2, '2025-02-11', 'Present','P'),
+('TG1363', 'ICT2133' ,2, '2025-02-18', 'Present','P'),
+('TG1363', 'ICT2133' ,2, '2025-02-25', 'Present','P'),
+('TG1363', 'ICT2133' ,2, '2025-03-04', 'Present','P'),
+('TG1363', 'ICT2133' ,2, '2025-03-11', 'Present','P'),
+('TG1363', 'ICT2133' ,2, '2025-03-18', 'Present','P'),
+('TG1363', 'ICT2133' ,2, '2025-03-25', 'Present','P'),
+('TG1363', 'ICT2133' ,2, '2025-04-01', 'Absent','P'),
+('TG1363', 'ICT2133' ,2, '2025-04-08', 'Present','P'),
+('TG1363', 'ICT2133' ,2, '2025-04-22', 'Present','P'),
+
+
+/*OOAD (ICT2133) ---------------------------------------- T */
+('TG1363', 'ICT2133',4, '2025-01-07', 'Present', 'T'),
+('TG1363', 'ICT2133',4, '2025-01-14', 'Absent', 'T'),
+('TG1363', 'ICT2133',4, '2025-01-21', 'Present', 'T'),
+('TG1363', 'ICT2133',4, '2025-01-28', 'Present', 'T'),
+('TG1363', 'ICT2133',4, '2025-02-04', 'Present', 'T'),
+('TG1363', 'ICT2133',4, '2025-02-11', 'Absent', 'T'),
+('TG1363', 'ICT2133',4, '2025-02-18', 'Present', 'T'),
+('TG1363', 'ICT2133',4, '2025-02-25', 'Present', 'T'),
+('TG1363', 'ICT2133',4, '2025-03-04', 'Present', 'T'),
+('TG1363', 'ICT2133',4, '2025-03-11', 'Present', 'T'),
+('TG1363', 'ICT2133',4, '2025-03-18', 'Absent', 'T'),
+('TG1363', 'ICT2133',4, '2025-03-25', 'Present', 'T'),
+('TG1363', 'ICT2133',4, '2025-04-01', 'Absent', 'T'),
+('TG1363', 'ICT2133',4, '2025-04-08', 'Present', 'T'),
+('TG1363', 'ICT2133',4, '2025-04-22', 'Present', 'T'),
+
+
+/* Business Economics (2152) - T*/
+('TG1363', 'ICT2152',4, '2025-01-10', 'Present', 'T'),
+('TG1363', 'ICT2152',4, '2025-01-17', 'Absent', 'T'),
+('TG1363', 'ICT2152',4, '2025-01-24', 'Present', 'T'),
+('TG1363', 'ICT2152',4, '2025-01-31', 'Present', 'T'),
+('TG1363', 'ICT2152',4, '2025-02-07', 'Present', 'T'),
+('TG1363', 'ICT2152',4, '2025-02-14', 'Absent', 'T'),
+('TG1363', 'ICT2152',4, '2025-02-21', 'Present', 'T'),
+('TG1363', 'ICT2152',4, '2025-02-28', 'Present', 'T'),
+('TG1363', 'ICT2152',4, '2025-03-07', 'Absent', 'T'),
+('TG1363', 'ICT2152',4, '2025-03-14', 'Present', 'T'),
+('TG1363', 'ICT2152',4, '2025-03-21', 'Present', 'T'),
+('TG1363', 'ICT2152',4, '2025-03-28', 'Absent', 'T'),
+('TG1363', 'ICT2152',4, '2025-04-04', 'Present', 'T'),
+('TG1363', 'ICT2152',4, '2025-04-11', 'Present', 'T'),
+('TG1363', 'ICT2152',4, '2025-04-25', 'Present', 'T');
+
+
+
+/* Medical Tabel */
+ALTER TABLE medical ADD FOREIGN KEY(attendance_id) references attendance_detail(at_id) on update cascade;
+
+CREATE TABLE Medical
+(medical_id INT AUTO_INCREMENT PRIMARY KEY,
+username CHAR(6),
+Description VARCHAR(40),
+Sub_date DATE,
+State ENUM('Approval','Rejected','Pending') DEFAULT 'Pending',
+c_code char(7),
+c_type CHAR(1),
+cut_lec_hour  int,
+attendance_id INT NOT NULL,
+m_photo LONGBLOB,
+FOREIGN KEY(username) REFERENCES users(username),
+FOREIGN KEY(c_code) REFERENCES courses(course_code));
+
+
+INSERT INTO Medical (username,Description,Sub_date,State,c_code,c_type,cut_lec_hour,attendance_id,m_photo)VALUES
+('TG1340','Matara hospital','2025-04-04','Approval','ICT2152','T',4,103,NULL ),
+('TG1341','Ruhunugama hospital','2025-03-27','Approval','ICT2142','P',4,118,NULL),
+('TG1341','Ruhunugama hospital','2025-03-27','Approval','ICT2122','T',4,133,NULL),
+('TG1341','Ruhunugama hospital','2025-04-10','Rejected','ICT2142','P',4,120,NULL),
+('TG1341','Ruhunugama hospital','2025-04-10','Rejected','ICT2122','T',4 , 135, NULL),
+('TG1342','Kamburupitiya hospital','2025-03-13','Approval','ICT2142','P',4 , 221, NULL),
+('TG1342','Kamburupitiya hospital','2025-02-18','Approval','ICT2133','P',2 , 227,NULL ),
+('TG1347','Dickoya hospital','2025-01-30','Approval','ICT2142','P',4, 740,NULL ),
+('TG1347','Dickoya hospital','2025-03-20','Approval','ICT2122','T',4,762, NULL),
+('TG1347','Karapitiya hospital','2025-04-04','Approval','ICT2152','T',4,838, NULL),
+('TG1353','Matara hospital','2025-03-28','Pending','ICT2152','T',4,1467,NULL),
+('TG1353','Matara hospital','2025-04-25','Approval','ICT2152','T',4,1470, NULL),
+('TG1356','Ruhunugama hospital','2025-01-30','Approval','ICT2122','T',4, 1700, NULL),
+('TG1356','Ruhunugama hospital','2025-03-20','Pending','ICT2122','T',4,1707, NULL),
+('TG1360','Matara hospital','2025-03-20','Pending','ICT2142','P',4,2112, NULL),
+('TG1360','Matara hospital','2025-03-20','Pending','ICT2122','T',4,2127, NULL),
+('TG1362','Karapitiya hospital','2025-03-10','Approval','ICT2113','P',4,2365, NULL),
+('TG1362','Karapitiya hospital','2025-03-10','Approval','ICT2113','T',2,2350, NULL),
+('TG1363','Ruhunugama hospital','2025-03-10','Rejected','ICT2113','T',4,2455, NULL),
+('TG1363','Matara hospital','2025-02-11','Pending','ICT2133','T',4,2496, NULL),
+('TG1363','Matara hospital','2025-02-14','Approval','ICT2152','T',4,2511, NULL);
+		
+
+
+/* Normal attendance */
+public void calculateAttendancePercentage(){
+
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+FROM 
+	attendance_detail
+WHERE 
+	c_code = ?
+	
+GROUP BY 
+	username,c_code,c_type;	
+	
+	
+/* Medical with attendance for lecture */
+public void AttendancePercentageWithMedical(){
+	
+	SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END)* 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage,
+		CASE 
+			WHEN (SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END)* 100.0 /SUM(c_hours))  >= 80 
+			THEN 
+				'Eligible' 
+			ELSE 
+				'Not_Eligible' END  AS Eligibility		
+			
+FROM 
+	attendance_detail
+WHERE
+	c_code = ?
+	
+GROUP BY 
+	username,c_code,c_type;	
+
+}
+
+public void HighAttendancePercentageWithMedical(){
+	
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+		
+FROM 
+	attendance_detail
+WHERE 
+		c_code = ?
+	
+GROUP BY 
+	username,c_code,c_type
+HAVING
+		Percentage >= 80;	
+	
+}
+
+public void LowAttendancePercentageWithMedical(){
+	
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+		
+FROM 
+	attendance_detail
+WHERE
+	c_code = ?
+	
+GROUP BY 
+	username,c_code,c_type
+HAVING
+		Percentage < 80;	
+	
+
+}
+
+public void ExactlyAttendancePercentageWithMedical(){
+	
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+		
+FROM 
+	attendance_detail
+WHERE 
+	c_code = ?
+	
+GROUP BY 
+	username,c_code,c_type
+HAVING
+		Percentage = 80;	
+	
+}
+
+
+public void getAttendanceForWholeBatch(){
+
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+		
+FROM 
+	attendance_detail
+WHERE
+	c_code = ?
+	
+GROUP BY 
+	username,c_code,c_type
+	
+
+}
+
+
+
+
+public void getAttendanceForIndividualyWithUser(){
+
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+		
+FROM 
+	attendance_detail
+WHERE
+	username = ?
+	
+GROUP BY 
+	username,c_code,c_type;
+	
+
+}
+
+
+
+public void getAttendanceForIndividualyWithUserAndc_code(){
+
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+		
+FROM 
+	attendance_detail
+WHERE
+	username = ? AND c_code = ?
+	
+GROUP BY 
+	username,c_code,c_type;
+	
+
+}
+
+
+public void getAttendanceForTheory(){
+
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+		
+FROM 
+	attendance_detail
+WHERE
+	 c_code = ? AND c_type = 'T'
+	
+GROUP BY 
+	username,c_code,c_type;
+	
+
+}
+
+
+public void getAttendanceForTheoryToIndividualUser(){
+
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+		
+FROM 
+	attendance_detail
+WHERE
+	 c_code = ? AND c_type = 'T' AND username = ?
+	
+GROUP BY 
+	username,c_code,c_type;
+	
+}
+
+
+
+
+public void getAttendanceForPractical(){
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+		
+FROM 
+	attendance_detail
+WHERE
+	 c_code = ? AND c_type = 'P'
+	
+GROUP BY 
+	username,c_code,c_type;
+	
+
+}
+
+
+public void getAttendanceForPracticalToIndividualUser(){
+
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+		
+FROM 
+	attendance_detail
+WHERE
+	 c_code = ? AND c_type = 'P' AND username = ?
+	
+GROUP BY 
+	username,c_code,c_type;
+	
+}
+
+
+
+public void getAttendanceForPracticalAndTheory(){
+
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+		
+FROM 
+	attendance_detail
+WHERE
+	 c_code = 'ICT2133' AND (c_type = 'P' OR c_type = 'T')
+	
+GROUP BY 
+	username,c_code,c_type;
+	
+}
+
+
+
+
+
+
+
+public void getAttendanceForPracticalAndTheory(){
+
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+		
+FROM 
+	attendance_detail
+WHERE
+	 c_code = 'ICT2133' AND (c_type = 'P' OR c_type = 'T') AND username = 'TG1362'
+	
+GROUP BY 
+	username,c_code,c_type;
+	
+}
+
+
+
+
+		
+public void calculateAttendancePercentage(){
+	SELECT 
+		SUM(CASE WHEN at_state = 'Present' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) AS Percentage
+FROM 
+	attendance_detail
+WHERE 
+		c_code = ?;
+GROUP BY 
+		username,c_code,c_type;			
+
+}		
+		
+		
+DOUBLE Practical_Persentage = SELECT 
+								username,
+								c_code,
+								c_type,
+			
+								SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+								AS 
+									Percentage
+		
+							FROM 
+								attendance_detail
+							WHERE
+								c_code = ? AND c_type = 'P'
+	
+							GROUP BY 
+								username,c_code,c_type;		
+								
+DOUBLE Theory_Percentage = 
+SELECT 
+		username,
+		c_code,
+		c_type,
+			
+		SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 /(SUM(c_hours)) 
+		AS 
+			Percentage
+		
+FROM 
+	attendance_detail
+WHERE
+	 c_code = ? AND c_type = 'T'
+	
+GROUP BY 
+	username,c_code,c_type;	
+
+	
+DOUBLE bothPercentage = (Practical_Persentage + Theory_Percentage)/2 ;								
+								
+
+/*End Marks */
+								
+CREATE TABLE end_marks
+(
+	student_id CHAR(6),
+	course_code CHAR(7),
+	end_theory decimal(4,2),
+	end_practical decimal(4,2),
+	FOREIGN KEY(student_id) REFERENCES users(username),
+	FOREIGN KEY(course_code) REFERENCES courses(course_code)
+);
+
+INSERT INTO end_marks
+VALUES
+('TG1340','ICT2113',90,65),
+('TG1341','ICT2113',65,88),
+('TG1342','ICT2113',63,90.5),
+('TG1343','ICT2113',20,35.5),
+('TG1344','ICT2113',90,83),
+('TG1345','ICT2113',65,28),
+('TG1346','ICT2113',50.5,45.5),
+('TG1347','ICT2113',80,72),
+('TG1348','ICT2113',60,56.5),
+('TG1349','ICT2113',56,44),
+('TG1350','ICT2113',63,90),
+('TG1351','ICT2113',78,90),
+('TG1352','ICT2113',50,60),
+('TG1353','ICT2113',60,55),
+('TG1354','ICT2113',35,40),
+('TG1355','ICT2113',85,90),
+('TG1356','ICT2113',28,25.5),
+('TG1357','ICT2113',56,90),
+('TG1358','ICT2113',45,55),
+('TG1359','ICT2113',68,30),
+('TG1360','ICT2113',54,75),
+('TG1361','ICT2113',52,45),
+('TG1362','ICT2113',30,60.5),
+('TG1363','ICT2113',75,90),
+
+
+
+('TG1340','ICT2122',90,0),
+('TG1341','ICT2122',65,0),
+('TG1342','ICT2122',63,0),
+('TG1343','ICT2122',85,0),
+('TG1344','ICT2122',70,0),
+('TG1345','ICT2122',65,0),
+('TG1346','ICT2122',50,0),
+('TG1347','ICT2122',80,0),
+('TG1348','ICT2122',60,0),
+('TG1349','ICT2122',56,0),
+('TG1350','ICT2122',63,0),
+('TG1351','ICT2122',78,0),
+('TG1352','ICT2122',50,0),
+('TG1353','ICT2122',20,0),
+('TG1354','ICT2122',90,0),
+('TG1355','ICT2122',85,0),
+('TG1356','ICT2122',78,0),
+('TG1357','ICT2122',56,0),
+('TG1358','ICT2122',45,0),
+('TG1359','ICT2122',68,0),
+('TG1360','ICT2122',54,0),
+('TG1361','ICT2122',52,0),
+('TG1362','ICT2122',85,0),
+('TG1363','ICT2122',75,0),
+
+
+('TG1340','ICT2133',90,65),
+('TG1341','ICT2133',65,88),
+('TG1342','ICT2133',63,20.5),
+('TG1343','ICT2133',20,35.5),
+('TG1344','ICT2133',70,83),
+('TG1345','ICT2133',75,82),
+('TG1346','ICT2133',50.5,45.5),
+('TG1347','ICT2133',80,72),
+('TG1348','ICT2133',60,56.5),
+('TG1349','ICT2133',56,44),
+('TG1350','ICT2133',63,90),
+('TG1351','ICT2133',78,90),
+('TG1352','ICT2133',50,60),
+('TG1353','ICT2133',50,35),
+('TG1354','ICT2133',15,40),
+('TG1355','ICT2133',85,90),
+('TG1356','ICT2133',28,25.5),
+('TG1357','ICT2133',56,90),
+('TG1358','ICT2133',45,55),
+('TG1359','ICT2133',68,30),
+('TG1360','ICT2133',54,50),
+('TG1361','ICT2133',52,45),
+('TG1362','ICT2133',30,60.5),
+('TG1363','ICT2133',75,50),
+
+
+('TG1340','ICT2142',0,65),
+('TG1341','ICT2142',0,88),
+('TG1342','ICT2142',0,20.5),
+('TG1343','ICT2142',0,35.5),
+('TG1344','ICT2142',0,83),
+('TG1345','ICT2142',0,78),
+('TG1346','ICT2142',0,45.5),
+('TG1347','ICT2142',0,72),
+('TG1348','ICT2142',0,56.5),
+('TG1349','ICT2142',0,44),
+('TG1350','ICT2142',0,90),
+('TG1351','ICT2142',0,90),
+('TG1352','ICT2142',0,60),
+('TG1353','ICT2142',0,35),
+('TG1354','ICT2142',0,40),
+('TG1355','ICT2142',0,90),
+('TG1356','ICT2142',0,85),
+('TG1357','ICT2142',0,90),
+('TG1358','ICT2142',0,55),
+('TG1359','ICT2142',0,75),
+('TG1360','ICT2142',0,50),
+('TG1361','ICT2142',0,45),
+('TG1362','ICT2142',0,60.5),
+('TG1363','ICT2142',0,50),
+
+
+('TG1340','ICT2152',90,0),
+('TG1341','ICT2152',65,0),
+('TG1342','ICT2152',83,0),
+('TG1343','ICT2152',20,0),
+('TG1344','ICT2152',70,0),
+('TG1345','ICT2152',15,0),
+('TG1346','ICT2152',50,0),
+('TG1347','ICT2152',80,0),
+('TG1348','ICT2152',60,0),
+('TG1349','ICT2152',56,0),
+('TG1350','ICT2152',63,0),
+('TG1351','ICT2152',78,0),
+('TG1352','ICT2152',50,0),
+('TG1353','ICT2152',80,0),
+('TG1354','ICT2152',90,0),
+('TG1355','ICT2152',85,0),
+('TG1356','ICT2152',88,0),
+('TG1357','ICT2152',56,0),
+('TG1358','ICT2152',45,0),
+('TG1359','ICT2152',68,0),
+('TG1360','ICT2152',54,0),
+('TG1361','ICT2152',52,0),
+('TG1362','ICT2152',75,0),
+('TG1363','ICT2152',75,0);
+
+
+/*CA Marks Table */
+
+CREATE TABLE CA_marks (
+                       stu_id CHAR(6),
+                       c_code CHAR(7),
+                       Q1_mark INT,
+                       Q2_mark INT,
+                       Q3_mark INT,
+		       Q4_mark INT,
+                       mid_term DECIMAL(5,2) ,
+                       as1_mark DECIMAL(5,2),
+		       as2_mark DECIMAL(5,2),
+                       FOREIGN KEY(c_code) REFERENCES courses(coure_code),
+                       FOREIGN KEY(stu_id) REFERENCES users(username));
+
+
+-------------------------------------------------------------------------------------------------
+
+INSERT INTO CA_marks
+VALUES
+      	("TG1340","ICT2113",8,7,10,0,19.5,0,0),
+      	("TG1340","ICT2122",5,9,8,6,18.5,14.3,0),
+      	("TG1340","ICT2133",10,9,10,0,0, 15.0 , 3.0 ), 
+      	("TG1340","ICT2142",0,0,0,0, 17.3 , 15.0 , 6.5 ),
+      	("TG1340","ICT2152",7,9,10,0, 0 , 12 ,15 ),
+
+	("TG1341","ICT2113",5,6,9,0,1,14,0),
+      	("TG1341","ICT2122",7,9,8,6,18.5,13,0),
+      	("TG1341","ICT2133",10,10,10,0,0, 15.0 , 13.0 ), 
+      	("TG1341","ICT2142",0,0,0,0, 17 , 15.0 , 16.5 ),
+      	("TG1341","ICT2152",7,8,8,0, 0 , 18 ,15 ),
+
+	("TG1342","ICT2113",7,7,7,0,19,0,0),
+      	("TG1342","ICT2122",5,6,5,10,18,12,0),
+      	("TG1342","ICT2133",10,8,10,0,0, 13.0 , 13.0 ), 
+      	("TG1342","ICT2142",0,0,0,0, 10 , 15.0 , 16.5 ),
+      	("TG1342","ICT2152",4,9,10,0, 0 , 16 ,15 ),
+
+	("TG1343","ICT2113",6,6,10,0,14,0,0),
+      	("TG1343","ICT2122",5,8,7,9,10,14,0),
+      	("TG1343","ICT2133",9,9,5,0,0, 16 , 18.0 ), 
+      	("TG1343","ICT2142",0,0,0,0, 12 , 16.0 , 16.5 ),
+      	("TG1343","ICT2152",7,9,9,0, 0 , 10 ,18 ),
+
+	("TG1344","ICT2113",8,7,10,0,19.5,0,0),
+      	("TG1344","ICT2122",5,9,8,6,18.5,14.3,0),
+      	("TG1344","ICT2133",10,9,10,0,0, 15.0 , 3.0 ), 
+      	("TG1344","ICT2142",0,0,0,0, 17.3 , 15.0 , 6.5 ),
+      	("TG1344","ICT2152",7,9,10,0, 0 , 12 ,15 ),
+
+	("TG1345","ICT2113",4,7,8,0,12.5,0,0),
+      	("TG1345","ICT2122",5,6,8,8,15,8,0),
+      	("TG1345","ICT2133",5,9,10,0,0,18 , 13.0 ), 
+      	("TG1345","ICT2142",0,0,0,0, 17.3 , 12.0 , 16.5 ),
+      	("TG1345","ICT2152",7,6,9,0, 0 , 17 ,15 ),
+
+	("TG1346","ICT2113",5,9,10,0,18.5,0,0),
+      	("TG1346","ICT2122",5,9,8,6,18,14,0),
+      	("TG1346","ICT2133",5,8,9,0,0, 15.0 ,12.0 ), 
+      	("TG1346","ICT2142",0,0,0,0, 16 , 15.0 , 13 ),
+      	("TG1346","ICT2152",7,9,4,0, 0 , 18 ,17 ),
+
+	("TG1347","ICT2113",8,7,5,0,19,0,0),
+      	("TG1347","ICT2122",8,8,10,6,18.5,14.3,0),
+      	("TG1347","ICT2133",10,10,10,0,0, 15.0 , 13.0 ), 
+      	("TG1347","ICT2142",0,0,0,0, 17 , 15.0 , 16.5 ),
+      	("TG1347","ICT2152",7,7,10,0, 0 , 13 ,15 ),
+		
+	("TG1348","ICT2113",7,7,10,0,16.5,0,0),
+      	("TG1348","ICT2122",5,6,8,8,15,14,0),
+      	("TG1348","ICT2133",10,6,9,0,0, 18.0 , 13.0 ), 
+      	("TG1348","ICT2142",0,0,0,0, 17 , 12.0 , 13.5 ),
+      	("TG1348","ICT2152",7,9,9,0, 0 , 12 ,15 ),
+
+	("TG1349","ICT2113",8,10,10,0,18,0,0),
+      	("TG1349","ICT2122",5,9,9,9,15,15,0),
+      	("TG1349","ICT2133",10,10,10,0,0, 15.0 , 13.0 ), 
+      	("TG1349","ICT2142",0,0,0,0, 18 , 15.0 , 16.5 ),
+      	("TG1349","ICT2152",8,8,10,0, 0 , 13 ,18 ),
+
+	("TG1350","ICT2113",8,10,10,0,15,0,0),
+      	("TG1350","ICT2122",9,4,8,9,10,14,0),
+      	("TG1350","ICT2133",7,5,6,0,0, 15.0 , 8.0 ), 
+      	("TG1350","ICT2142",0,0,0,0, 17 , 5.0 , 6.5 ),
+      	("TG1350","ICT2152",6,6,10,0, 0 , 19 ,14 ),
+
+	("TG1351","ICT2113",10,7,10,0,19,0,0),
+      	("TG1351","ICT2122",6,7,8,6,18.5,14.5,0),
+      	("TG1351","ICT2133",10,9,8,0,0, 15.0 , 13.0 ), 
+      	("TG1351","ICT2142",0,0,0,0, 17.3 , 15.0 ,12.5 ),
+      	("TG1351","ICT2152",7,9,8,0, 0 , 12.5 ,15.5 ),
+
+	("TG1352","ICT2113",8,9,9,0,15,0,0),
+      	("TG1352","ICT2122",5,9,8,6,18,12,0),
+      	("TG1352","ICT2133",8,5,10,0,0,10.0 , 13.0 ), 
+      	("TG1352","ICT2142",0,0,0,0, 15 , 15.0 , 16.5 ),
+      	("TG1352","ICT2152",7,9,10,0, 0 , 17 ,15 ),
+
+	("TG1353","ICT2113",9,7,9,0,18,0,0),
+      	("TG1353","ICT2122",6,7,8,7,15,12,0),
+      	("TG1353","ICT2133",10,5,7,0,0, 15.0 , 18.0 ), 
+      	("TG1353","ICT2142",0,0,0,0, 14 , 14.0 , 16.5 ),
+      	("TG1353","ICT2152",7,9,8,0, 0 , 12 ,18),
+
+	("TG1354","ICT2113",8,7,7,0,15.5,0,0),
+      	("TG1354","ICT2122",6,8,8,6,12,12.5,0),
+      	("TG1354","ICT2133",10,9,9,0,0, 15.0 , 10.0 ), 
+      	("TG1354","ICT2142",0,0,0,0, 17.3 , 15.0 , 16.5 ),
+      	("TG1354","ICT2152",7,9,9,0, 0 , 11 ,17 ),
+
+	("TG1355","ICT2113",8,7,8,0,18,0,0),
+      	("TG1355","ICT2122",5,8,8,8,14,14,0),
+      	("TG1355","ICT2133",10,10,10,0,0, 15.0 , 13.0 ), 
+      	("TG1355","ICT2142",0,0,0,0, 17 , 15.0 , 16.5 ),
+      	("TG1355","ICT2152",7,9,10,0, 0 , 15 ,12 ),
+
+	("TG1356","ICT2113",8,7,7,0,19,0,0),
+      	("TG1356","ICT2122",5,10,8,6,18.5,14.5,0),
+      	("TG1356","ICT2133",8,9,6,0,0, 15.0 , 13.0 ), 
+      	("TG1356","ICT2142",0,0,0,0, 15.5 , 15.0 , 12 ),
+      	("TG1356","ICT2152",7,9,7,0, 0 , 11 ,16 ),
+
+	("TG1357","ICT2113",8,7,10,0,19.5,0,0),
+      	("TG1357","ICT2122",5,9,8,6,18.5,14.3,0),
+      	("TG1357","ICT2133",10,9,10,0,0, 15.0 , 13.0 ), 
+      	("TG1357","ICT2142",0,0,0,0, 17.3 , 15.0 , 16.5 ),
+      	("TG1357","ICT2152",7,9,10,0, 0 , 12 ,15 ),
+
+	("TG1358","ICT2113",7,7,7,0,15,0,0),
+      	("TG1358","ICT2122",6,8,8,8,15.5,14,0),
+      	("TG1358","ICT2133",6,5,10,0,0, 12.0 , 16.0 ), 
+      	("TG1358","ICT2142",0,0,0,0, 18 , 10.0 ,17.5 ),
+      	("TG1358","ICT2152",7,7,8,0, 0 , 12.5 ,15.5 ),
+
+	("TG1359","ICT2113",7,7,8,0,10,0,0),
+      	("TG1359","ICT2122",5,9,9,6,10,12,0),
+      	("TG1359","ICT2133",8,7,10,0,0, 15.0 , 18.0 ), 
+      	("TG1359","ICT2142",0,0,0,0, 14 , 15.0 , 16.5 ),
+      	("TG1359","ICT2152",7,9,9,0, 0 , 15,14 ),
+
+	("TG1360","ICT2113",6,7,9,0,19,0,0),
+      	("TG1360","ICT2122",5,10,7,8,10,11,0),
+      	("TG1360","ICT2133",10,9,9,0,0, 12.0 , 13.0 ), 
+      	("TG1360","ICT2142",0,0,0,0, 17 , 15.0 , 17.5 ),
+      	("TG1360","ICT2152",7,9,8,0, 0 , 15 ,17 ),
+
+	("TG1361","ICT2113",10,10,10,0,15,0,0),
+      	("TG1361","ICT2122",5,9,9,10,18.5,14.5,0),
+      	("TG1361","ICT2133",8,7,10,0,0, 16.0 , 13.0 ), 
+      	("TG1361","ICT2142",0,0,0,0, 17 , 15.0 , 12 ),
+      	("TG1361","ICT2152",7,9,9,0, 0 , 12 ,15 ),
+
+	("TG1362","ICT2113",9,7,6,0,15,0,0),
+      	("TG1362","ICT2122",5,9,8,8,17,12,0),
+      	("TG1362","ICT2133",9,9,5,0,0, 11.0 , 13.0 ), 
+      	("TG1362","ICT2142",0,0,0,0, 12 , 18.0 , 16.5 ),
+      	("TG1362","ICT2152",8,9,9,0, 0 , 15 ,14 ),
+
+	("TG1363","ICT2113",10,7,9,0,14,0,0),
+      	("TG1363","ICT2122",5,9,8,6,15,16,0),
+      	("TG1363","ICT2133",7,9,6,0,0, 15.0 , 13.0 ), 
+      	("TG1363","ICT2142",0,0,0,0, 15 , 15.0 , 15 ),
+      	("TG1363","ICT2152",7,9,6,0, 0 , 10 ,18 );
+
+
+/* Course Materials  */
+
+CREATE TABLE course_materials
+(
+	course_code VARCHAR(20) PRIMARY KEY,
+    	Material_Name VARCHAR(50),
+	Driver_link VARCHAR(100),
+	FOREIGN KEY (course_code) REFERENCES courses(course_code)	
+);
+
+INSERT INTO course_materials 
+VALUES 
+('ICT2113',  'Lecture 1 ', 'https://drive.google.com/file/d/1A2B3C4D5E6F/view?usp=sharing'),
+('ICT2122',  'Lecture 2 ', 'https://drive.google.com/file/d/7G8H9I0J1K2L/view?usp=sharing'),
+('ICT2133',  'Mini Project ', 'https://drive.google.com/file/d/3M4N5O6P7Q8R/view?usp=sharing'),
+('ICT2142',  'Lecture 3 ', 'https://drive.google.com/file/d/3M4N5O6P7Q8R/view?usp=sharing'),
+('ICT2152',  'Lecture 4 ', 'https://drive.google.com/file/d/3M4N5O6P7Q8R/view?usp=sharing');
+
+
+Create view marks AS 
+select 
+	c.stu_id,
+	c.c_code,
+	Q1_mark,
+	Q2_mark,
+	Q3_mark,
+	Q4_mark,
+	mid_term,
+	as1_mark,
+	as2_mark,
+	end_theory,
+	end_practical
+from CA_marks c
+JOIN
+end_marks e ON c.c_code=e.course_code AND c.stu_id=e.student_id;
+
+
+
+/*Final end marks calculate*/
+
+
+CREATE VIEW final_end_marks AS
+SELECT 
+    student_id,
+    course_code,
+    CAST(
+        CASE
+            WHEN course_code IN ('ICT2113', 'ICT2133') 
+                THEN (end_theory * 0.4 + end_practical * 0.3)
+            WHEN course_code = 'ICT2122'
+                THEN (end_theory * 0.6)
+            WHEN course_code = 'ICT2142'
+                THEN (end_practical * 0.6)
+            WHEN course_code = 'ICT2152'
+                THEN (end_theory * 0.7)
+            ELSE NULL
+        END 
+    AS DECIMAL(4,2)) AS final_end_marks
+FROM 
+    end_marks;
+
+
+
+/*Final CA marks calculate */
+
+
+CREATE VIEW final_CA_marks AS
+SELECT
+    stu_id,
+    c_code,
+    CAST(
+        CASE 
+            WHEN c_code='ICT2113' THEN 
+                (((Q1_mark + Q2_mark + Q3_mark) - LEAST(Q1_mark, Q2_mark, Q3_mark))/2) * 0.1 +
+                (mid_term * 0.2)
+            WHEN c_code = 'ICT2122' THEN 
+                (((Q1_mark + Q2_mark + Q3_mark + Q4_mark) - LEAST(Q1_mark, Q2_mark, Q3_mark, Q4_mark))/3) * 0.1 +
+                ((as1_mark + as2_mark) * 0.1) +
+                (mid_term * 0.2)
+	    WHEN c_code IN ('ICT2133','ICT2152') THEN 
+                (((Q1_mark + Q2_mark + Q3_mark ) - LEAST(Q1_mark, Q2_mark, Q3_mark))/2) * 0.1 +
+                ((as1_mark + as2_mark) * 0.2) 
+	    WHEN c_code='ICT2142'  THEN
+		((as1_mark + as2_mark) * 0.2) +
+                (mid_term * 0.2)
+            ELSE NULL
+        END AS DECIMAL(4, 2)
+    ) AS final_CA_marks
+FROM 
+    CA_marks;
+
+
+/*Final marks calculate  (CA marks+final end marks)
+View for final marks as a whole batch with all course units*/
+
+
+CREATE VIEW final_results AS
+SELECT 
+    f.student_id,
+    f.course_code,
+    (f.final_end_marks + t.final_CA_marks) AS total_marks
+FROM 
+    final_end_marks f
+JOIN 
+    final_ca_marks t 
+ON 
+    f.student_id = t.stu_id AND f.course_code = t.c_code;
+
+
+
+/* view for student grades  */
+
+CREATE VIEW student_grades AS
+SELECT
+    fr.student_id,
+    fr.course_code,
+    
+    CASE
+        WHEN fr.total_marks >= 85.0 THEN 'A+'
+        WHEN fr.total_marks >= 75.0 THEN 'A'
+        WHEN fr.total_marks >= 70.0 THEN 'A-'
+        WHEN fr.total_marks >= 65.0 THEN 'B+'
+        WHEN fr.total_marks >= 60.0 THEN 'B'
+        WHEN fr.total_marks >= 55.0 THEN 'B-'
+        WHEN fr.total_marks >= 50.0 THEN 'C+'
+        WHEN fr.total_marks >= 45.0 THEN 'C'
+        WHEN fr.total_marks >= 40.0 THEN 'C-'
+        WHEN fr.total_marks >= 35.0 THEN 'D+'
+        WHEN fr.total_marks >= 30.0 THEN 'D'
+        ELSE 'E'
+    END AS student_grade
+FROM
+    final_results fr
+JOIN
+    users u ON fr.student_id = u.username;
+
+
+
+ /* View course_credits table */
+
+CREATE VIEW course_credits AS
+SELECT
+    s.student_id,
+    c.course_code,
+    c.credits,
+    s.student_grade
+FROM
+    student_grades s
+JOIN
+    courses c ON s.course_code = c.course_code;
+
+
+/* View course_credits table  */
+
+CREATE VIEW SGPA AS 
+SELECT
+    student_id,
+    ROUND(SUM(credits * CASE
+        WHEN student_grade = 'A+' THEN 4.0
+        WHEN student_grade = 'A' THEN 4.0
+        WHEN student_grade = 'A-' THEN 3.7
+        WHEN student_grade = 'B+' THEN 3.3
+        WHEN student_grade = 'B' THEN 3.0
+        WHEN student_grade = 'B-' THEN 2.7
+        WHEN student_grade = 'C+' THEN 2.3
+        WHEN student_grade = 'C' THEN 2.0
+        WHEN student_grade = 'C-' THEN 1.7
+        WHEN student_grade = 'D+' THEN 1.3
+        WHEN student_grade = 'D' THEN 1.0
+        WHEN student_grade = 'E' THEN 0.0
+        ELSE 0.0
+    END) / SUM(credits), 2) AS SGPA
+FROM course_credits
+GROUP BY student_id;
+
+
+/* Calculate CGPA */
+
+CREATE VIEW CGPA AS
+SELECT
+    student_id,
+    ROUND(SUM(credits * CASE
+        WHEN student_grade = 'A+' THEN 4.0
+        WHEN student_grade = 'A' THEN 4.0
+        WHEN student_grade = 'A-' THEN 3.7
+        WHEN student_grade = 'B+' THEN 3.3
+        WHEN student_grade = 'B' THEN 3.0
+        WHEN student_grade = 'B-' THEN 2.7
+        WHEN student_grade = 'C+' THEN 2.3
+        WHEN student_grade = 'C' THEN 2.0
+        WHEN student_grade = 'C-' THEN 1.7
+        WHEN student_grade = 'D+' THEN 1.3
+        WHEN student_grade = 'D' THEN 1.0
+        WHEN student_grade = 'E' THEN 0.0
+        ELSE 0.0
+    END) / SUM(credits), 2) AS CGPA
+FROM course_credits
+WHERE course_code != 'ENG1222'
+GROUP BY student_id;
+
+
+
+
+CREATE VIEW CA_Eligibility_new AS 
+SELECT
+        stu_id,
+        c_code,
+        final_CA_marks,
+        
+
+        CASE
+             
+             WHEN c_code = "ICT2113" AND  final_CA_marks >= (15 * 0.3) THEN "Pass"
+             WHEN c_code = "ICT2122" AND  final_CA_marks >= (20 * 0.4) THEN "Pass"
+             WHEN c_code = "ICT2133" AND  final_CA_marks >= (15 * 0.3) THEN "Pass"
+             WHEN c_code = "ICT2142" AND  final_CA_marks >= (20 * 0.4) THEN "Pass"
+             WHEN c_code = "ICT2152" AND  final_CA_marks >= (15 * 0.3) THEN "Pass"
+             ELSE "Fail"   
+        END
+        AS CA_eligibility
+FROM 
+        final_CA_marks; 
+
+
+
+CREATE VIEW attendance_eligibility AS
+SELECT 
+    username,
+    c_code,
+    c_type,
+    SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 / SUM(c_hours) AS Percentage,
+    CASE 
+        WHEN (SUM(CASE WHEN at_state = 'Present' OR at_state = 'Medical' THEN c_hours ELSE 0 END) * 100.0 / SUM(c_hours)) >= 80
+        THEN 'Eligible'
+        ELSE 'Not_Eligible' 
+    END AS Eligibility
+FROM 
+    attendance_detail
+GROUP BY 
+    username, c_code, c_type;
+
+
+CREATE VIEW final_eligibility AS
+SELECT 
+    ca.stu_id,
+    ca.c_code,
+    
+    CASE
+        WHEN ca.CA_eligibility = 'Pass' AND atd.Eligibility = 'Eligible' THEN 'Eligible'
+        ELSE 'Not_Eligible'
+    END AS Final_Eligibility
+FROM 
+    CA_Eligibility_new ca
+JOIN 
+    attendance_eligibility atd
+ON 
+    ca.c_code = atd.c_code
+AND 
+    ca.stu_id = atd.username;
+
+
+
+

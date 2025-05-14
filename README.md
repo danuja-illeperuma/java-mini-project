@@ -5,7 +5,7 @@ A Java-based desktop application for managing faculty-related data. The project 
 
 📁 Project Structure
 
-<pre> ``` faculty-managment/ ├── src/ │ ├── admin/ │ ├── lecturer/ │ ├── student/ │ ├── toofficer/ │ └── welcome/ ├── Main.java ├── faculty-managment.iml └── .gitignore ``` </pre>
+<pre lang="nohighlight"><code> ``` faculty-managment/ ├── src/ │ ├── admin/ │ ├── lecturer/ │ ├── student/ │ ├── toofficer/ │ └── welcome/ ├── Main.java ├── faculty-managment.iml └── .gitignore ``` </code></pre>
 
 🚀 Features
 Add, update, and delete student information

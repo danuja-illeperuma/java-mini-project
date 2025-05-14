@@ -34,7 +34,7 @@ MySQL database for data storage
 🏁 Getting Started
 1. Clone the Repository
 
-git clone https://github.com/danuja-illeperuma/mini_project_java.git
+git clone https://github.com/danuja-illeperuma/java-mini-project.git
 cd mini_project_java
 
 

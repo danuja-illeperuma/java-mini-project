@@ -52,10 +52,6 @@ cd mini_project_java
 
 - Open `Main.java` in your IDE and run it.
 
-📸 Screenshots
-
-_Add screenshots of the GUI here if available._
-
 👤 Author
 
 **Danuja Illeperuma**  

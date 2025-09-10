@@ -1,0 +1,101 @@
+Create view marks AS 
+select 
+	stu_id,
+	c_code,
+	Q1_mark,
+	Q2_mark,
+	Q3_mark,
+	Q4_mark,
+	mid_term,
+	as1_mark,
+	as2_mark,
+	end_theory,
+	end_practical
+from CA_marks ,end_marks;
+
+
+*********************************
+Final end marks calculate
+*********************************
+
+
+CREATE VIEW final_end_marks AS
+SELECT 
+    student_id,
+    course_code,
+    CAST(
+        (
+    CASE
+        WHEN course_code IN ('ICT2113', 'ICT2133') 
+            THEN (end_theory * 0.4 + end_practical * 0.3)
+        WHEN course_code = 'ICT2122'
+            THEN (end_theory * 0.6)
+        WHEN course_code = 'ICT2142'
+            THEN (end_practical * 0.6)
+        WHEN course_code = 'ICT2152'
+            THEN (end_theory * 0.7)
+        ELSE NULL
+    END 
+    )DECIMAL(4,2)
+AS final_end_marks
+FROM 
+    end_marks;
+
+
+*********************************
+Final CA marks calculate
+*********************************
+
+
+CREATE VIEW final_CA_marks AS
+SELECT
+    stu_id,
+    c_code,
+    CAST(
+        CASE 
+            WHEN c_code='ICT2113' THEN 
+                ((Q1_mark + Q2_mark + Q3_mark) - LEAST(Q1_mark, Q2_mark, Q3_mark)) * 0.1 +
+                (mid_term * 0.2)
+            WHEN c_code = 'ICT2122' THEN 
+                ((Q1_mark + Q2_mark + Q3_mark + Q4_mark) - LEAST(Q1_mark, Q2_mark, Q3_mark, Q4_mark)) * 0.1 +
+                ((as1_mark + as2_mark) * 0.1) +
+                (mid_term * 0.2)
+	    WHEN c_code IN ('ICT2133','ICT2152') THEN 
+                ((Q1_mark + Q2_mark + Q3_mark ) - LEAST(Q1_mark, Q2_mark, Q3_mark)) * 0.1 +
+                ((as1_mark + as2_mark) * 0.2) 
+	    WHEN c_code='ICT2142'  THEN
+		((as1_mark + as2_mark) * 0.2) +
+                (mid_term * 0.2)
+            ELSE NULL
+        END AS DECIMAL(4, 2)
+    ) AS final_CA_marks
+FROM 
+    CA_marks;
+
+
+**********************************************************
+Final marks calculate  (CA marks+final end marks)
+**********************************************************
+__________________________________________________________________
+View for final marks as a whole batch with all course units
+__________________________________________________________________
+
+
+CREATE VIEW final_results AS
+SELECT 
+    f.student_id,
+    f.course_code,
+    COALESCE(f.final_end_marks, 0) + COALESCE(t.Total_CA_marks, 0) AS total_marks
+FROM 
+    final_end_marks f
+LEFT JOIN 
+    total_CA_marks t ON f.student_id = t.stu_id AND f.course_code = t.c_code
+
+    
+
+
+
+ 
+
+
+
